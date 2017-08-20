@@ -9,9 +9,12 @@ GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 let map
 let poly
 let google
+let length = 0
+let mileLength = 0
 let markers = []
 
 const getCurrentLocation = function () {
+  console.log('fires within getCurrentLocation')
   navigator.geolocation.getCurrentPosition(function (position) {
     const pos = {
       lat: position.coords.latitude,
@@ -22,7 +25,9 @@ const getCurrentLocation = function () {
 }
 
 const initialize = function (pos) {
+  console.log('fires within initialize')
   GoogleMapsLoader.load(function (google) {
+    console.log('fires within GoogleMapsLoader')
     const loc = {
       lat: pos.lat,
       lng: pos.lng
@@ -43,6 +48,7 @@ const initialize = function (pos) {
       addPoint(event.latLng)
     })
     function removePoint (marker) {
+      console.log('fires within RemovePoint')
       for (let i = 0; i < markers.length; i++) {
         if (markers[i] === marker) {
           markers[i].setMap(null)
@@ -51,10 +57,11 @@ const initialize = function (pos) {
         }
       }
       const length = google.maps.geometry.spherical.computeLength(polyline.getPath())
-      const mileLength = (length * 0.000621371).toFixed(2)
+      mileLength = (length * 0.000621371).toFixed(2)
       $('#length').text('This run is ' + mileLength + ' miles long.')
     }
     function addPoint (latlng) {
+      console.log('fires within AddPoint')
       const marker = new google.maps.Marker({
         position: latlng,
         animation: google.maps.Animation.DROP,
@@ -66,9 +73,26 @@ const initialize = function (pos) {
         removePoint(marker)
       })
       const length = google.maps.geometry.spherical.computeLength(polyline.getPath())
-      const mileLength = (length * 0.000621371).toFixed(2)
+      mileLength = (length * 0.000621371).toFixed(2)
       $('#length').text('This run is ' + mileLength + ' miles long.')
+      console.log('Total miles is' + mileLength)
     }
+    // clearBoard 'function'
+    $(document).ready(function () {
+      $('#clear').on('click', function (event) {
+        console.log('fires within ClearRoute (which is not actually a function)')
+        for (let i = 0; i < markers.length; i++) {
+          console.log('Markers within addPoint forLoop' + i + markers)
+          markers[i].setMap(null)
+          // markers.splice(i, 1)
+          // polyline.getPath().removeAt(i)
+          polyline.setMap(null)
+        }
+        mileLength = 0
+        $('#length').text('This run is ' + mileLength + ' miles long.')
+        console.log('Total miles is' + mileLength)
+      })
+    })
   })
 }
 

@@ -4,6 +4,8 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const mapEvents = require('./events')
 
+let markers = []
+
 $(() => {
   setAPIOrigin(location, config)
   $('#find').on('click', mapEvents.getCurrentLocation)
