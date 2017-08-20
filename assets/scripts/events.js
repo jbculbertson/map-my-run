@@ -9,6 +9,7 @@ GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 let map
 let poly
 let google
+let polyline
 let length = 0
 let mileLength = 0
 let markers = []
@@ -39,7 +40,7 @@ const initialize = function (pos) {
     }
     let map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
-    let polyline = new google.maps.Polyline({
+    polyline = new google.maps.Polyline({
       strokeColor: 'black',
       strokeWeight: 3,
       map: map
@@ -56,7 +57,7 @@ const initialize = function (pos) {
           polyline.getPath().removeAt(i)
         }
       }
-      const length = google.maps.geometry.spherical.computeLength(polyline.getPath())
+      length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
       $('#length').text('This run is ' + mileLength + ' miles long.')
     }
@@ -72,7 +73,7 @@ const initialize = function (pos) {
       google.maps.event.addListener(marker, 'click', function (event) {
         removePoint(marker)
       })
-      const length = google.maps.geometry.spherical.computeLength(polyline.getPath())
+      length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
       $('#length').text('This run is ' + mileLength + ' miles long.')
       console.log('Total miles is' + mileLength)
@@ -82,13 +83,17 @@ const initialize = function (pos) {
       $('#clear').on('click', function (event) {
         console.log('fires within ClearRoute (which is not actually a function)')
         for (let i = 0; i < markers.length; i++) {
-          console.log('Markers within addPoint forLoop' + i + markers)
+          console.log('Markers within clearRoute forLoop ' + i + markers[i])
           markers[i].setMap(null)
-          // markers.splice(i, 1)
-          // polyline.getPath().removeAt(i)
-          polyline.setMap(null)
         }
+        polyline.setMap(null)
+        markers = []
         mileLength = 0
+        polyline = new google.maps.Polyline({
+          strokeColor: 'black',
+          strokeWeight: 3,
+          map: map
+        })
         $('#length').text('This run is ' + mileLength + ' miles long.')
         console.log('Total miles is' + mileLength)
       })
