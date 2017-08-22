@@ -75,10 +75,9 @@ const initialize = function (pos) {
         animation: google.maps.Animation.DROP,
         map: map
       })
-      let x = latlng.lat()
-      let y = latlng.lng()
+      const x = latlng.lat()
+      const y = latlng.lng()
       route.push([x, y])
-      console.log('route of LatLng is ' + route)
       markers.push(marker)
       polyline.getPath().setAt(markers.length - 1, latlng)
       google.maps.event.addListener(marker, 'click', function (event) {
@@ -117,7 +116,7 @@ const onCreateRun = function (event) {
   const formData = getFormFields(this)
   const data = {
     'run': {
-      'distance': formData.run.distance,
+      'distance': mileLength,
       'timeTaken': formData.run.timeTaken,
       'route': route
     }

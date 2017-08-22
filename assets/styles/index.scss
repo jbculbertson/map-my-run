@@ -2,6 +2,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 
+input {
+  margin: 5px;
+  width: 95%;
+}
+
+.modal-body {
+  overflow-y: auto;
+}
+
+.modal-title {
+  text-align: center;
+}
+
 #map {
   height: 500px;
   width: 100%;
