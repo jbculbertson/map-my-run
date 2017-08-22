@@ -10,6 +10,7 @@ $(() => {
   setAPIOrigin(location, config)
   $('#find').on('click', mapEvents.getCurrentLocation)
   $('#create-run').on('submit', mapEvents.onCreateRun)
+  $('#show-all').on('click', mapEvents.onShowAllRuns)
 })
 
 // use require without a reference to ensure a file is bundled

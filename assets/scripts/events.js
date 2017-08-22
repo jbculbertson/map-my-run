@@ -128,8 +128,15 @@ const onCreateRun = function (event) {
     .catch(ui.createRunFailure)
 }
 
+const onShowAllRuns = function (event) {
+  api.showAllRuns()
+    .then(ui.showAllRunsSuccess)
+    .catch(ui.showAllRunsFailure)
+}
+
 module.exports = {
   getCurrentLocation,
   initialize,
-  onCreateRun
+  onCreateRun,
+  onShowAllRuns
 }

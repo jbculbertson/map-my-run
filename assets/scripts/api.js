@@ -16,6 +16,18 @@ const createRun = function (data) {
   })
 }
 
+const showAllRuns = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/runs',
+    method: 'GET',
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // },
+    data
+  })
+}
+
 module.exports = {
-  createRun
+  createRun,
+  showAllRuns
 }
