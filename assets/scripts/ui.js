@@ -12,7 +12,7 @@ const createRunFailure = (error) => {
 
 const showAllRunsSuccess = (data) => {
   console.log(data)
-  let showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
+  const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
   $('#display').append(showAllRunsHtml)
 }
 
@@ -20,9 +20,19 @@ const showAllRunsFailure = (error) => {
   console.error(error.responseText)
 }
 
+const deleteRunSuccess = (data) => {
+  console.log(data)
+}
+
+const deleteRunFailure = (error) => {
+  console.error('within deleteFail, error is ' + error.responseText)
+}
+
 module.exports = {
   createRunSuccess,
   createRunFailure,
   showAllRunsSuccess,
-  showAllRunsFailure
+  showAllRunsFailure,
+  deleteRunSuccess,
+  deleteRunFailure
 }

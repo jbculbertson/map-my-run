@@ -27,7 +27,19 @@ const showAllRuns = function (data) {
   })
 }
 
+const deleteRun = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/runs/' + data,
+    method: 'DELETE'
+    // ,
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
 module.exports = {
   createRun,
-  showAllRuns
+  showAllRuns,
+  deleteRun
 }

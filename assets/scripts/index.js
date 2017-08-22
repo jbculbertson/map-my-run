@@ -11,6 +11,7 @@ $(() => {
   $('#find').on('click', mapEvents.getCurrentLocation)
   $('#create-run').on('submit', mapEvents.onCreateRun)
   $('#show-all').on('click', mapEvents.onShowAllRuns)
+  $('#display').on('click', '#delete-run', mapEvents.onDeleteRun)
 })
 
 // use require without a reference to ensure a file is bundled

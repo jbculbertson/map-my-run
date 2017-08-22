@@ -10,9 +10,9 @@ const GoogleMapsLoader = require('google-maps')
 GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
-let map
-let poly
-let google
+// let map
+// let poly
+// let google
 let polyline
 let length = 0
 let mileLength = 0
@@ -134,9 +134,16 @@ const onShowAllRuns = function (event) {
     .catch(ui.showAllRunsFailure)
 }
 
+const onDeleteRun = function (event) {
+  api.deleteRun(this.dataset.id)
+    .then(ui.deleteRunSuccess)
+    .catch(ui.deleteRunFailure)
+}
+
 module.exports = {
   getCurrentLocation,
   initialize,
   onCreateRun,
-  onShowAllRuns
+  onShowAllRuns,
+  onDeleteRun
 }
