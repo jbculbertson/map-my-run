@@ -12,6 +12,14 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure)
 }
 
+const onSignIn = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
 const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
@@ -19,11 +27,14 @@ const onSignOut = function (event) {
 }
 
 const addHandlers = function () {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
   $('#sign-out-button').on('click', onSignOut)
 }
 
 module.exports = {
   onSignUp,
+  onSignIn,
   onSignOut,
   addHandlers
 }
