@@ -3,6 +3,14 @@
 const config = require('../config.js')
 const store = require('../store')
 
+const signUp = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-up',
+    method: 'POST',
+    data
+  })
+}
+
 const signOut = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
@@ -15,5 +23,6 @@ const signOut = function (data) {
 }
 
 module.exports = {
+  signUp,
   signOut
 }

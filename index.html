@@ -22,7 +22,10 @@
     <button type="button" class="btn btn-success" id="clear">Clear Route</button>
     <button type="button" class="btn btn-success" id="find">Find Me</button>
     <button type="button" class="btn btn-success" id="show-all">Show All Runs</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-up-modal">
+      Sign Up</button>
     <button type="button" class="btn btn-success" id="sign-out-button">Logout</button>
+
   </nav>
 
   <h3>Map My Run</h3>
@@ -66,6 +69,42 @@
       </div>
     </div>
   </div>
+  <!-- SIGN UP -->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Sign Up</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="sign-up-modal-header"></h3>
+          <form id="sign-up">
+            <div class="form group">
+              <label class="col-sm-2">Email: </label>
+              <div class="col-sm-10">
+                <input class="sign-up" type="text" name="credentials[email]" value="" placeholder="abc@example.com">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-2">Password: </label>
+              <div class="col-sm-10">
+                <input class="sign-up" type="password" name="credentials[password]" value="" placeholder="password">
+              </div>
+            </div>
+            <div class="form group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" name="submit" value="Sign in!">Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
