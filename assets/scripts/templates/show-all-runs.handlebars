@@ -1,8 +1,10 @@
 {{#each runs as |run|}}
 
-<div class="row" data-id="{{run.id}}">
-  <h3>Distance: {{run.distance}}</h3>
-  <h3>Time: {{run.timeTaken}}</h3>
+<div data-id="{{run.id}}">
+  <h4>Distance: {{run.distance}}</h4>
+  <h4>Time: {{run.timeTaken}}</h4>
+  <h4>Time Created: {{run.createdAt}}</h4>
+  <h4>Owner: {{run._owner}}</h4>
   <!-- DELETE RUN BUTTON -->
   <button id="delete-run" class="btn btn-danger btn-sm" data-id="{{run._id}}">
     <i class="fa fa-trash"></i></button>
