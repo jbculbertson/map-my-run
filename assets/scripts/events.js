@@ -1,5 +1,9 @@
 'use strict'
 
+const getFormFields = require(`../../lib/get-form-fields`)
+const api = require('./api')
+const ui = require('./ui')
+
 const env = require('../../.env.js')
 const GoogleMapsLoader = require('google-maps')
 
@@ -13,6 +17,7 @@ let polyline
 let length = 0
 let mileLength = 0
 let markers = []
+let route = []
 
 const getCurrentLocation = function () {
   console.log('fires within getCurrentLocation')
@@ -38,7 +43,7 @@ const initialize = function (pos) {
       center: loc,
       mapTypeId: 'terrain'
     }
-    let map = new google.maps.Map(document.getElementById('map'),
+    const map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
     polyline = new google.maps.Polyline({
       strokeColor: 'black',
@@ -54,6 +59,7 @@ const initialize = function (pos) {
         if (markers[i] === marker) {
           markers[i].setMap(null)
           markers.splice(i, 1)
+          route.splice(i, 1)
           polyline.getPath().removeAt(i)
         }
       }
@@ -63,11 +69,16 @@ const initialize = function (pos) {
     }
     function addPoint (latlng) {
       console.log('fires within AddPoint')
+      console.log(latlng)
       const marker = new google.maps.Marker({
         position: latlng,
         animation: google.maps.Animation.DROP,
         map: map
       })
+      let x = latlng.lat()
+      let y = latlng.lng()
+      route.push([x, y])
+      console.log('route of LatLng is ' + route)
       markers.push(marker)
       polyline.getPath().setAt(markers.length - 1, latlng)
       google.maps.event.addListener(marker, 'click', function (event) {
@@ -88,6 +99,7 @@ const initialize = function (pos) {
         }
         polyline.setMap(null)
         markers = []
+        route = []
         mileLength = 0
         polyline = new google.maps.Polyline({
           strokeColor: 'black',
@@ -101,7 +113,24 @@ const initialize = function (pos) {
   })
 }
 
+const onCreateRun = function (event) {
+  const formData = getFormFields(this)
+  const data = {
+    'run': {
+      'distance': formData.run.distance,
+      'timeTaken': formData.run.timeTaken,
+      'route': route
+    }
+  }
+  console.log('within create run, data = ' + data)
+  event.preventDefault()
+  api.createRun(data)
+    .then(ui.createRunSuccess)
+    .catch(ui.createRunFailure)
+}
+
 module.exports = {
   getCurrentLocation,
-  initialize
+  initialize,
+  onCreateRun
 }

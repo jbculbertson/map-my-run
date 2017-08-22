@@ -19,5 +19,25 @@
       <button id="stop">Stop Tracking</button> -->
       <button id="clear">Clear Route</button>
       <button id="find">Find Me</button>
+
+      <form id="create-run">
+        <div class="form group">
+          <label class="col-sm-2">Distance</label>
+          <div class="col-sm-10">
+            <input class="create-run" type="text" name="run[distance]" value="" placeholder="distance"><br>
+          </div>
+        </div>
+        <div class="form group">
+          <label class="col-sm-2">Time Taken</label>
+          <div class="col-sm-10">
+            <input class="create-run" type="text" name="run[timeTaken]" value="" placeholder="time taken"><br>
+          </div>
+        </div>
+        <div class="form group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" name="submit" value="">Save Run</button>
+          </div>
+        </div>
+      </form>
     </body>
 </html>
