@@ -27,6 +27,17 @@ const showAllRuns = function (data) {
   })
 }
 
+const showAllMyRuns = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/userruns/' + store.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const deleteRun = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/runs/' + data,
@@ -40,5 +51,6 @@ const deleteRun = function (data) {
 module.exports = {
   createRun,
   showAllRuns,
+  showAllMyRuns,
   deleteRun
 }

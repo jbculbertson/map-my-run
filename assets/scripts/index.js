@@ -13,6 +13,7 @@ $(() => {
   $('#find').on('click', mapEvents.getCurrentLocation)
   $('#create-run').on('submit', mapEvents.onCreateRun)
   $('#show-all').on('click', mapEvents.onShowAllRuns)
+  $('#show-my').on('click', mapEvents.onShowAllMyRuns)
   $('#display').on('click', '#delete-run', mapEvents.onDeleteRun)
 })
 
