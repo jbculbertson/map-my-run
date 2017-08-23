@@ -8,16 +8,23 @@ const GoogleMapsLoader = require('google-maps')
 GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
-const initialize = function (pos) {
+let polyline
+let markers = []
+
+const initialize = function (route) {
+  const loc = {
+    lat: route[0][0],
+    lng: route[0][1]
+  }
   console.log('fires within initialize2')
   GoogleMapsLoader.load(function (google) {
     console.log('fires within GoogleMapsLoader2')
-    const loc = {
-      lat: pos.lat,
-      lng: pos.lng
-    }
+    // const loc = {
+    //   lat: pos[0],
+    //   lng: pos[1]
+    // }
     const mapOptions = {
-      zoom: 15,
+      zoom: 6,
       center: loc,
       mapTypeId: 'terrain'
     }
@@ -28,13 +35,41 @@ const initialize = function (pos) {
     //   strokeWeight: 3,
     //   map: map
     // })
+    for (let i = 1; i < route.length; i++) {
+      const place = {
+        lat: route[i][0],
+        lng: route[i][1]
+      }
+      addPoint(place)
+    }
+    function addPoint (latlng) {
+      const marker = new google.maps.Marker({
+        position: latlng,
+        animation: google.maps.Animation.DROP,
+        map: map
+      })
+      markers.push(marker)
+      console.log('within map2, markers is', markers)
+      // polyline.getPath().setAt(markers.length - 1, latlng)
+    }
   })
+}
+
+const showOneRunSuccess = (data) => {
+  store.runs = data.runs
+  // const startLoc = data.run.route[0]
+  const route = data.run.route
+  console.log('within showOneRunSuccess, data is ', data)
+  initialize(route)
+  // $('#display').empty()
+  // const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
+  // $('#display').append(showAllRunsHtml)
 }
 
 const createRunSuccess = (data) => {
   $('.create-run-modal-header').text('Successfully saved route.')
   $('.create-run').val('')
-  console.log(data)
+  console.log('within createRunSuccess, data is ', data)
 }
 
 const createRunFailure = (error) => {
@@ -65,16 +100,6 @@ const showAllMyRunsSuccess = (data) => {
 
 const showAllMyRunsFailure = (error) => {
   console.error(error.responseText)
-}
-
-const showOneRunSuccess = (data) => {
-  store.runs = data.runs
-  const startLoc = data.run.route[0]
-  console.log('within showOneRunSuccess, modified data is ', (data.run.route[0]))
-  initialize(startLoc)
-  // $('#display').empty()
-  // const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
-  // $('#display').append(showAllRunsHtml)
 }
 
 const showOneRunFailure = (error) => {

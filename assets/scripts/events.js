@@ -27,6 +27,7 @@ const getCurrentLocation = function () {
       lng: position.coords.longitude
     }
     initialize(pos)
+    console.log('within getCurrentLocation, pos is ', pos)
   })
 }
 
