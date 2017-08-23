@@ -140,6 +140,13 @@ const onShowAllMyRuns = function (event) {
     .catch(ui.showAllMyRunsFailure)
 }
 
+const onShowOneRun = function (event) {
+  const data = this.dataset.id
+  api.showOneRun(data)
+    .then(ui.showOneRunSuccess)
+    .catch(ui.showOneRunFailure)
+}
+
 const onDeleteRun = function (event) {
   api.deleteRun(this.dataset.id)
     .then(ui.deleteRunSuccess)
@@ -152,5 +159,6 @@ module.exports = {
   onCreateRun,
   onShowAllRuns,
   onShowAllMyRuns,
+  onShowOneRun,
   onDeleteRun
 }

@@ -38,6 +38,18 @@ const showAllMyRunsFailure = (error) => {
   console.error(error.responseText)
 }
 
+const showOneRunSuccess = (data) => {
+  console.log(data)
+  store.runs = data.runs
+  // $('#display').empty()
+  // const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
+  // $('#display').append(showAllRunsHtml)
+}
+
+const showOneRunFailure = (error) => {
+  console.error(error.responseText)
+}
+
 const deleteRunSuccess = (data) => {
   console.log(data)
 }
@@ -51,6 +63,8 @@ module.exports = {
   createRunFailure,
   showAllRunsSuccess,
   showAllRunsFailure,
+  showOneRunSuccess,
+  showOneRunFailure,
   showAllMyRunsSuccess,
   showAllMyRunsFailure,
   deleteRunSuccess,
