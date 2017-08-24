@@ -19,10 +19,6 @@ const initialize = function (route) {
   console.log('fires within initialize2')
   GoogleMapsLoader.load(function (google) {
     console.log('fires within GoogleMapsLoader2')
-    // const loc = {
-    //   lat: pos[0],
-    //   lng: pos[1]
-    // }
     const mapOptions = {
       zoom: 6,
       center: loc,
@@ -49,7 +45,6 @@ const initialize = function (route) {
         map: map
       })
       markers.push(marker)
-      console.log('within map2, markers is', markers)
       polyline.getPath().setAt(markers.length - 1, latlng)
     }
   })
@@ -97,7 +92,7 @@ const showAllMyRunsSuccess = (data) => {
     totalMiles += data.runs[i].distance
   }
   $('.miles-stat').text(totalMiles + ' miles.')
-  $('.stats-modal-header').text(store.user.fullName)
+  $('.stats-modal-title').text(store.user.fullName + '\'s stats')
 }
 
 const showAllMyRunsFailure = (error) => {

@@ -21,6 +21,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .then(mapEvents.getCurrentLocation)
+    .then(mapEvents.onShowAllMyRuns)
     .catch(ui.signInFailure)
 }
 
