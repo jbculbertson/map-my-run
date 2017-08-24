@@ -30,12 +30,12 @@ const initialize = function (route) {
     }
     const map = new google.maps.Map(document.getElementById('map2'),
     mapOptions)
-    // polyline = new google.maps.Polyline({
-    //   strokeColor: 'black',
-    //   strokeWeight: 3,
-    //   map: map
-    // })
-    for (let i = 1; i < route.length; i++) {
+    polyline = new google.maps.Polyline({
+      strokeColor: 'black',
+      strokeWeight: 3,
+      map: map
+    })
+    for (let i = 0; i < route.length; i++) {
       const place = {
         lat: route[i][0],
         lng: route[i][1]
@@ -50,20 +50,16 @@ const initialize = function (route) {
       })
       markers.push(marker)
       console.log('within map2, markers is', markers)
-      // polyline.getPath().setAt(markers.length - 1, latlng)
+      polyline.getPath().setAt(markers.length - 1, latlng)
     }
   })
 }
 
 const showOneRunSuccess = (data) => {
   store.runs = data.runs
-  // const startLoc = data.run.route[0]
   const route = data.run.route
   console.log('within showOneRunSuccess, data is ', data)
   initialize(route)
-  // $('#display').empty()
-  // const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
-  // $('#display').append(showAllRunsHtml)
 }
 
 const createRunSuccess = (data) => {
