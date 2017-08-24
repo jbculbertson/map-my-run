@@ -97,6 +97,7 @@ const showAllMyRunsSuccess = (data) => {
     totalMiles += data.runs[i].distance
   }
   $('.miles-stat').text(totalMiles + ' miles.')
+  $('.stats-modal-header').text(store.user.fullName)
 }
 
 const showAllMyRunsFailure = (error) => {
