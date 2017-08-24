@@ -69,8 +69,7 @@ const initialize = function (pos) {
       $('#length').text('This run is ' + mileLength + ' miles long.')
     }
     function addPoint (latlng) {
-      console.log('fires within AddPoint')
-      console.log(latlng)
+      console.log('fires within AddPoint, latlng is ', latlng)
       const marker = new google.maps.Marker({
         position: latlng,
         animation: google.maps.Animation.DROP,

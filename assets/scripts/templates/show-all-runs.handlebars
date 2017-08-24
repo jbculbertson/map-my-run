@@ -1,3 +1,4 @@
+
 {{#each runs as |run|}}
 
 <!-- <div class="row"> -->
@@ -11,7 +12,6 @@
         <p>Average Pace: {{run.avgPace}} min/mile</p>
         <p>Date: {{run.createdAt}}</p>
         <p>Owner: {{run._owner}}</p>
-        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
         <button id="delete-run" class="btn btn-danger btn-sm" data-id="{{run._id}}">
           <i class="fa fa-trash"></i></button>
         <button id="show-one-run" class="btn btn-default btn-sm" data-id="{{run._id}}">

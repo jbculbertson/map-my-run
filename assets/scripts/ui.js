@@ -10,6 +10,7 @@ GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
 let polyline
 let markers = []
+let polylineRoute = []
 
 const initialize = function (route) {
   const loc = {
@@ -27,16 +28,19 @@ const initialize = function (route) {
     const map = new google.maps.Map(document.getElementById('map2'),
     mapOptions)
     polyline = new google.maps.Polyline({
+      path: polylineRoute,
       strokeColor: 'black',
       strokeWeight: 3,
       map: map
     })
     for (let i = 0; i < route.length; i++) {
-      const place = {
-        lat: route[i][0],
-        lng: route[i][1]
-      }
-      addPoint(place)
+      // const place = {
+      //   lat: route[i][0],
+      //   lng: route[i][1]
+      // }
+      const point = new google.maps.LatLng(route[i][0], route[i][1])
+      polylineRoute.push(point)
+      addPoint(point)
     }
     function addPoint (latlng) {
       const marker = new google.maps.Marker({
