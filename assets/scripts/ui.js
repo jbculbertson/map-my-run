@@ -87,11 +87,16 @@ const showAllRunsFailure = (error) => {
 }
 
 const showAllMyRunsSuccess = (data) => {
-  console.log(data)
+  console.log('showAllMyRuns data is, ', data)
   store.runs = data.runs
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
   $('#display').append(showAllRunsHtml)
+  let totalMiles = 0
+  for (let i = 0; i < data.runs.length; i++) {
+    totalMiles += data.runs[i].distance
+  }
+  $('.miles-stat').text(totalMiles + ' miles.')
 }
 
 const showAllMyRunsFailure = (error) => {
