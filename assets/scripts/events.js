@@ -112,7 +112,7 @@ const initialize = function (pos) {
   })
 }
 
-const onCreateRun = function (event) {
+const onSaveRun = function (event) {
   const formData = getFormFields(this)
   const data = {
     'run': {
@@ -121,11 +121,11 @@ const onCreateRun = function (event) {
       'route': route
     }
   }
-  console.log('within create run, data = ' + data)
+  console.log('within save run, data = ' + data)
   event.preventDefault()
-  api.createRun(data)
-    .then(ui.createRunSuccess)
-    .catch(ui.createRunFailure)
+  api.saveRun(data)
+    .then(ui.saveRunSuccess)
+    .catch(ui.saveRunFailure)
 }
 
 const onShowAllRuns = function (event) {
@@ -156,7 +156,7 @@ const onDeleteRun = function (event) {
 module.exports = {
   getCurrentLocation,
   initialize,
-  onCreateRun,
+  onSaveRun,
   onShowAllRuns,
   onShowAllMyRuns,
   onShowOneRun,

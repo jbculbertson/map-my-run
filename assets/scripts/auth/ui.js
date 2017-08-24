@@ -21,6 +21,17 @@ const signInSuccess = (data) => {
   $('#sign-up-modal').modal('hide')
   $('.sign-up-modal-header').text('')
   $('.sign-in-modal-header').text('')
+  $('#sign-in-button').hide()
+  $('#sign-up-button').hide()
+  $('#stats-button').show()
+  $('#clear-button').show()
+  $('#sign-out-button').show()
+  $('#show-all-button').show()
+  $('#show-my-button').show()
+  $('#change-password-button').show()
+  $('#save-run-button').show()
+
+  $('').hide()
   console.log('successful sign in')
 }
 
@@ -45,6 +56,15 @@ const changePasswordFailure = (error) => {
 const signOutSuccess = () => {
   $('.change-password-modal-header').text('')
   console.log('successful sign out')
+  $('#sign-in-button').show()
+  $('#sign-up-button').show()
+  $('#stats-button').hide()
+
+  $('#sign-out-button').hide()
+  $('#show-all-button').hide()
+  $('#show-my-button').hide()
+  $('#change-password-button').hide()
+  $('#save-run-button').hide()
 }
 
 const signOutFailure = (error) => {

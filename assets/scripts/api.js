@@ -4,7 +4,7 @@
 const config = require('./config.js')
 const store = require('./store')
 
-const createRun = function (data) {
+const saveRun = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/runs',
     method: 'POST',
@@ -58,7 +58,7 @@ const deleteRun = function (data) {
 }
 
 module.exports = {
-  createRun,
+  saveRun,
   showAllRuns,
   showAllMyRuns,
   showOneRun,

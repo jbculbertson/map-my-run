@@ -1,6 +1,15 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+#clear-button, #find-button, #show-all-button, #show-my-button,
+#change-password-button, #sign-out-button, #stats-button, #save-run-button {
+  display: none;
+}
 
 input {
   margin: 5px;
@@ -17,12 +26,16 @@ input {
 
 #map {
   height: 500px;
-  width: 100%;
+  width: 95%;
 }
 
 #map2 {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 50%;
+}
+
+.navbar {
+  margin-bottom: 0;
 }
 
 .thumbnail {

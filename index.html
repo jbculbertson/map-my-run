@@ -15,30 +15,42 @@
 </head>
 
 <body class="container-fluid">
-  <nav>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-run-modal">
-          Create Run
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-    <button type="button" class="btn btn-success" id="clear">Clear Route</button>
-    <button type="button" class="btn btn-danger" id="find">Find Me</button>
-    <button type="button" class="btn btn-success" id="show-all">Show All Runs</button>
-    <button type="button" class="btn btn-success" id="show-my">Show My Runs</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stats-modal">
+        <a class="navbar-brand">RunTracker</a>
+      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <button type="button" class="btn btn-success" id="save-run-button" data-toggle="modal" data-target="#save-run-modal">
+          Save Run
+        </button>
+        <button type="button" class="btn btn-success" id="clear-button">Clear Route</button>
+        <button type="button" class="btn btn-danger" id="find-button">Find Me</button>
+        <button type="button" class="btn btn-success" id="show-all-button">Show All Runs</button>
+        <button type="button" class="btn btn-success" id="show-my-button">Show My Runs</button>
+        <button type="button" class="btn btn-primary" id="stats-button" data-toggle="modal" data-target="#stats-modal">
       Stats</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-up-modal">
+        <button type="button" class="btn btn-primary" id="sign-up-button" data-toggle="modal" data-target="#sign-up-modal">
       Sign Up</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-in-modal">
+        <button type="button" class="btn btn-primary" id="sign-in-button" data-toggle="modal" data-target="#sign-in-modal">
       Sign In</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-password-modal">
+        <button type="button" class="btn btn-primary" id="change-password-button" data-toggle="modal" data-target="#change-password-modal">
       Change Password</button>
-    <button type="button" class="btn btn-success" id="sign-out-button">Logout</button>
+        <button type="button" class="btn btn-success" id="sign-out-button">Logout</button>
+      </ul>
+    </div>
   </nav>
 
-  <div class="row">
-  <h3>Map My Run</h3>
-  <h4 id="length"></h4>
-  <div id="map"></div>
-  <div id="map2"></div>
+  <div class="row-fluid">
+    <h4 id="length"></h4>
+    <div id="map"></div>
+    <div id="map2"></div>
 
     <div class="col-lg-12">
       <div id="display">
@@ -47,9 +59,9 @@
   </div>
 
 
-<!-- ALLLL MODALS NOW -->
+  <!-- ALLLL MODALS NOW -->
 
-<!-- CHANGE PASSWORD MODAL -->
+  <!-- CHANGE PASSWORD MODAL -->
   <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -82,23 +94,23 @@
       </div>
     </div>
   </div>
-<!-- CREATE RUN MODAL -->
-<div class="modal fade" id="create-run-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Save Route</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <!-- SAVE RUN MODAL -->
+  <div class="modal fade" id="save-run-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Save Route</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-      </div>
-      <div class="modal-body">
-        <h3 class="create-run-modal-header"></h3>
-          <form id="create-run">
+        </div>
+        <div class="modal-body">
+          <h3 class="save-run-modal-header"></h3>
+          <form id="save-run">
             <div class="form group">
               <label class="col-sm-3">Time Taken</label>
               <div class="col-sm-9">
-                <input class="create-run" type="text" name="run[timeTaken]" value="" placeholder="duration in minutes"><br>
+                <input class="save-run" type="text" name="run[timeTaken]" value="" placeholder="duration in minutes"><br>
               </div>
             </div>
             <div class="form group">
@@ -112,17 +124,17 @@
     </div>
   </div>
   <!-- STATS MODAL -->
-<div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="stats-modal-title" id="exampleModalLabel"></h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="stats-modal-title" id="exampleModalLabel"></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-      </div>
-      <div class="modal-body">
-        <h3 class="stats-modal-header"></h3>
+        </div>
+        <div class="modal-body">
+          <h3 class="stats-modal-header"></h3>
           <form id="stats">
             <div class="form group">
               <label class="col-sm-3">Total Miles Tracked</label>

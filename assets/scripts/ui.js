@@ -21,7 +21,7 @@ const initialize = function (route) {
   GoogleMapsLoader.load(function (google) {
     console.log('fires within GoogleMapsLoader2')
     const mapOptions = {
-      zoom: 6,
+      zoom: 13,
       center: loc,
       mapTypeId: 'terrain'
     }
@@ -33,6 +33,9 @@ const initialize = function (route) {
       strokeWeight: 3,
       map: map
     })
+    // polyline.setMap(null)
+    let markers = []
+    let polylineRoute = []
     for (let i = 0; i < route.length; i++) {
       // const place = {
       //   lat: route[i][0],
@@ -61,15 +64,15 @@ const showOneRunSuccess = (data) => {
   initialize(route)
 }
 
-const createRunSuccess = (data) => {
-  $('.create-run-modal-header').text('Successfully saved route.')
-  $('.create-run').val('')
-  console.log('within createRunSuccess, data is ', data)
+const saveRunSuccess = (data) => {
+  $('.save-run-modal-header').text('Successfully saved route.')
+  $('.save-run').val('')
+  console.log('within saveRunSuccess, data is ', data)
 }
 
-const createRunFailure = (error) => {
-  $('.create-run-modal-header').text('There was an error saving your route.')
-  $('.create-run').val('')
+const saveRunFailure = (error) => {
+  $('.save-run-modal-header').text('There was an error saving your route.')
+  $('.save-run').val('')
   console.error(error.responseText)
 }
 
@@ -93,7 +96,7 @@ const showAllMyRunsSuccess = (data) => {
   $('#display').append(showAllRunsHtml)
   let totalMiles = 0
   for (let i = 0; i < data.runs.length; i++) {
-    totalMiles += data.runs[i].distance
+    totalMiles = data.runs[i].distance
   }
   $('.miles-stat').text(totalMiles + ' miles.')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')
@@ -116,8 +119,8 @@ const deleteRunFailure = (error) => {
 }
 
 module.exports = {
-  createRunSuccess,
-  createRunFailure,
+  saveRunSuccess,
+  saveRunFailure,
   showAllRunsSuccess,
   showAllRunsFailure,
   showOneRunSuccess,
