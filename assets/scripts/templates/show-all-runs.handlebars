@@ -1,24 +1,48 @@
-
 {{#each runs as |run|}}
 
-<!-- <div class="row"> -->
-  <div class="col-sm-5 col-md-2">
-    <div class="thumbnail">
-      <img src="http://i.imgur.com/9FGzzh1.png" alt="...">
-      <div class="caption">
-        <!-- <h3>Thumbnail label</h3> -->
-        <p>Distance: {{run.distance}} miles</p>
-        <p>Time: {{run.timeTaken}} minutes</p>
-        <p>Average Pace: {{run.avgPace}} min/mile</p>
-        <p>Date: {{run.createdAt}}</p>
-        <p>Owner: {{run._owner}}</p>
-        <p>Owner: {{run.ownerName}}</p>
-        <button id="delete-run" class="btn btn-danger btn-sm" data-id="{{run._id}}">
-          <i class="fa fa-trash"></i></button>
-        <button id="show-one-run" class="btn btn-default btn-sm" data-id="{{run._id}}">
-          Show Run Details</button>
-      </div>
+<!-- <div class="col-md-12">
+  <div class="thumbnail">
+    <img src="http://i.imgur.com/9FGzzh1.png" alt="...">
+    <div class="caption">
+      <h3>Thumbnail label</h3>
+      <p>Distance:  miles</p>
+      <p>Time: {{run.timeTaken}} minutes</p>
+      <p>Average Pace: {{run.avgPace}} min/mile</p>
+      <p>Date: {{run.createdAt}}</p>
+      <p>Owner: {{run._owner}}</p>
+      <p>Owner: {{run.ownerName}}</p>
+      <button id="delete-run" class="btn btn-danger btn-sm" data-id="{{run._id}}">
+        <i class="fa fa-trash"></i></button>
+      <button id="show-one-run" class="btn btn-default btn-sm" data-id="{{run._id}}">
+        Show Run Details</button>
     </div>
   </div>
-<!-- </div> -->
+</div> -->
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><strong>{{run.ownerName}}</strong> ran {{run.distance}} miles</div>
+
+  <!-- Table -->
+  <table class="table">
+    <tr>
+     <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
+     <th><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></th>
+   </tr>
+    <tr>
+     <td><strong>{{run.distance}}</strong></td>
+     <td><strong>{{run.avgPace}}</strong></td>
+   </tr>
+    <tr>
+     <td>DISTANCE (MI)</td>
+     <td>AVG. PACE</td>
+   </tr>
+  </table>
+  <button class="btn btn-danger" id="delete-run" data-id="{{run._id}}">Delete
+      <i class="fa fa-trash-o"></i></button>
+    <!-- <i class="fa fa-cog" aria-hidden="true"></i> -->
+    <button class="btn btn-success" id="show-one-run" data-id="{{run._id}}">
+      Map  <i class="fa fa-map-marker"></i></button>
+</div>
+
 {{/each}}

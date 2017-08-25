@@ -1,6 +1,10 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.btn {
+  margin: 5px;
+}
+
 .container-fluid {
   margin: 0;
   padding: 0;
@@ -42,6 +46,13 @@ input {
   margin-bottom: 0;
 }
 
-.thumbnail {
-  float: left;
+.panel {
+  margin: 0 auto;
+  width: 75%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
 }
