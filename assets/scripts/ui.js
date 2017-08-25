@@ -96,7 +96,8 @@ const showAllMyRunsSuccess = (data) => {
   $('#display').append(showAllRunsHtml)
   let totalMiles = 0
   for (let i = 0; i < data.runs.length; i++) {
-    totalMiles = data.runs[i].distance
+    totalMiles += data.runs[i].distance
+    console.log('within forloop after showAllMyRuns success, totalMiles is ', totalMiles)
   }
   $('.miles-stat').text(totalMiles + ' miles.')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')

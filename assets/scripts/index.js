@@ -11,6 +11,7 @@ $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
   $('#find-button').on('click', mapEvents.getCurrentLocation)
+  $('#save-run-button').on('click', mapEvents.getCurrentLocation)
   $('#save-run').on('submit', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
   $('#show-my-button').on('click', mapEvents.onShowAllMyRuns)

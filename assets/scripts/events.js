@@ -10,9 +10,6 @@ const GoogleMapsLoader = require('google-maps')
 GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
-// let map
-// let poly
-// let google
 let polyline
 let length = 0
 let mileLength = 0
@@ -66,7 +63,7 @@ const initialize = function (pos) {
       }
       length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
-      $('#length').text('This run is ' + mileLength + ' miles long.')
+      $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
     }
     function addPoint (latlng) {
       console.log('fires within AddPoint, latlng is ', latlng)
@@ -85,12 +82,12 @@ const initialize = function (pos) {
       })
       length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
-      $('#length').text('This run is ' + mileLength + ' miles long.')
+      $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
       console.log('Total miles is ' + mileLength)
     }
     // clearBoard 'function'
     $(document).ready(function () {
-      $('#clear').on('click', function (event) {
+      $('#clear-button').on('click', function (event) {
         console.log('fires within ClearRoute (which is not actually a function)')
         for (let i = 0; i < markers.length; i++) {
           console.log('Markers within clearRoute forLoop ' + i + markers[i])
@@ -105,7 +102,7 @@ const initialize = function (pos) {
           strokeWeight: 3,
           map: map
         })
-        $('#length').text('This run is ' + mileLength + ' miles long.')
+        $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
         console.log('Total miles is ' + mileLength)
       })
     })
@@ -150,6 +147,10 @@ const onShowOneRun = function (event) {
 const onDeleteRun = function (event) {
   api.deleteRun(this.dataset.id)
     .then(ui.deleteRunSuccess)
+    .then(() => {
+      $('#display').empty()
+      onShowAllMyRuns()
+    })
     .catch(ui.deleteRunFailure)
 }
 

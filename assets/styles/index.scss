@@ -11,6 +11,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
+#display {
+  width: 100%;
+}
+
 input {
   margin: 5px;
   width: 95%;
@@ -25,7 +29,7 @@ input {
 }
 
 #map {
-  height: 500px;
+  height: 300px;
   width: 95%;
 }
 
