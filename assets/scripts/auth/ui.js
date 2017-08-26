@@ -59,12 +59,12 @@ const signOutSuccess = () => {
   $('#sign-in-button').show()
   $('#sign-up-button').show()
   $('#stats-button').hide()
-
   $('#sign-out-button').hide()
   $('#show-all-button').hide()
   $('#show-my-button').hide()
   $('#change-password-button').hide()
   $('#save-run-button').hide()
+  $('#display').hide()
 }
 
 const signOutFailure = (error) => {
