@@ -1,5 +1,6 @@
 'use strict'
 const showAllRunsTemplate = require('./templates/show-all-runs.handlebars')
+const showMyRunsTemplate = require('./templates/show-my-runs.handlebars')
 const store = require('./store')
 
 const env = require('../../.env.js')
@@ -95,14 +96,17 @@ const showAllMyRunsSuccess = (data) => {
   console.log('showAllMyRuns data is, ', data)
   store.runs = data.runs
   $('#display').empty()
-  const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
-  $('#display').append(showAllRunsHtml)
+  const showMyRunsHtml = showMyRunsTemplate({ runs: data.runs })
+  $('#display').append(showMyRunsHtml)
   let totalMiles = 0
-  let fastestPace = 1000
   for (let i = 0; i < data.runs.length; i++) {
     totalMiles += data.runs[i].distance
+  }
+  let fastestPace = data.runs[0].avgPace
+  for (let i = 0; i < data.runs.length; i++) {
     if (data.runs[i].avgPace < fastestPace) {
       fastestPace = data.runs[i].avgPace
+      console.log(fastestPace)
     }
   }
   $('.miles-stat').text(totalMiles + ' miles')
