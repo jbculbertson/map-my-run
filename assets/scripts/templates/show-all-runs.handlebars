@@ -1,7 +1,9 @@
 {{#each runs as |run|}}
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading"><strong>{{run.ownerName}}</strong> ran {{run.distance}} miles <br>
+
+  <div class="panel-heading"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+           <strong>{{run.ownerName}}</strong> ran <strong>{{run.distance}}</strong> miles <br><br>
   {{run.date}}</div>
   <!-- Table -->
   <table class="table">
@@ -22,7 +24,7 @@
     <button class="btn btn-success" id="show-one-run" data-id="{{run._id}}"
     data-toggle="modal" data-target="#show-run-modal">
       <i class="fa fa-map-marker"></i></button>
-    <button class="btn btn-success">
-      <i class="fa fa-thumbs-o-up" aria-hidden="true"> 49 </i></button>
+    <!-- <button class="btn btn-success">
+      <i class="fa fa-thumbs-o-up" aria-hidden="true"> 49 </i></button> -->
 </div>
 {{/each}}

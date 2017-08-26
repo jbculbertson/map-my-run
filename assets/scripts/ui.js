@@ -108,7 +108,7 @@ const showAllMyRunsSuccess = (data) => {
       fastestPace = data.runs[i].avgPace
     }
   }
-  $('.miles-stat').text(totalMiles + ' miles')
+  $('.miles-stat').text((totalMiles).toFixed(2) + ' miles')
   $('.time-stat').text(totalTime + ' minutes')
   $('.pace-stat').text(fastestPace + ' min/mile')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')
