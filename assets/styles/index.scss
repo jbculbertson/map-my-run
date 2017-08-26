@@ -56,8 +56,11 @@ input {
   width: 75%;
 }
 
-table, th, td {
+table {
   border: 1px solid black;
+}
+
+table, th, td {
   border-collapse: collapse;
   text-align: center;
 }

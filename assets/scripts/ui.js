@@ -99,14 +99,17 @@ const showAllMyRunsSuccess = (data) => {
   const showMyRunsHtml = showMyRunsTemplate({ runs: data.runs })
   $('#display').append(showMyRunsHtml)
   let totalMiles = 0
+  let totalTime = 0
   let fastestPace = data.runs[0].avgPace
   for (let i = 0; i < data.runs.length; i++) {
     totalMiles += data.runs[i].distance
+    totalTime += data.runs[i].timeTaken
     if (data.runs[i].avgPace < fastestPace) {
       fastestPace = data.runs[i].avgPace
     }
   }
   $('.miles-stat').text(totalMiles + ' miles')
+  $('.time-stat').text(totalTime + ' minutes')
   $('.pace-stat').text(fastestPace + ' min/mile')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')
 }
