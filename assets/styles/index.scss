@@ -15,6 +15,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
+#delete-run {
+  float: right;
+}
+
 #display {
   width: 100%;
 }
@@ -33,13 +37,13 @@ input {
 }
 
 #map {
-  height: 300px;
+  height: 75vh;
   width: 95%;
 }
 
 #map2 {
-  height: 300px;
-  width: 50%;
+  height: 75vh;
+  width: 95%;
 }
 
 .navbar {
@@ -48,6 +52,7 @@ input {
 
 .panel {
   margin: 0 auto;
+  margin-top: 10px;
   width: 75%;
 }
 
@@ -55,4 +60,8 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
+}
+
+#toggle-view {
+  margin: 0 auto;
 }

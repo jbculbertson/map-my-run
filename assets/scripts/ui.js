@@ -33,7 +33,10 @@ const initialize = function (route) {
       strokeWeight: 3,
       map: map
     })
-    // polyline.setMap(null)
+    $('#show-run-modal').on('shown.bs.modal', function () {
+      google.maps.event.trigger(map, 'resize')
+      map.setCenter(new google.maps.LatLng(loc))
+    })
     let markers = []
     let polylineRoute = []
     for (let i = 0; i < route.length; i++) {
@@ -95,11 +98,15 @@ const showAllMyRunsSuccess = (data) => {
   const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
   $('#display').append(showAllRunsHtml)
   let totalMiles = 0
+  let fastestPace = 1000
   for (let i = 0; i < data.runs.length; i++) {
     totalMiles += data.runs[i].distance
-    console.log('within forloop after showAllMyRuns success, totalMiles is ', totalMiles)
+    if (data.runs[i].avgPace < fastestPace) {
+      fastestPace = data.runs[i].avgPace
+    }
   }
-  $('.miles-stat').text(totalMiles + ' miles.')
+  $('.miles-stat').text(totalMiles + ' miles')
+  $('.pace-stat').text(fastestPace + ' min/mile')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')
 }
 
