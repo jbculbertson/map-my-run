@@ -4,7 +4,6 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const mapEvents = require('./events')
 const authEvents = require('./auth/events')
-
 // let markers = []
 
 $(() => {
@@ -17,6 +16,9 @@ $(() => {
   $('#show-my-button').on('click', mapEvents.onShowAllMyRuns)
   $('#display').on('click', '#delete-run', mapEvents.onDeleteRun)
   $('#display').on('click', '#show-one-run', mapEvents.onShowOneRun)
+  $('.btn-group').on('click', '.btn', function () {
+    $(this).addClass('active').siblings().removeClass('active')
+  })
 })
 
 // use require without a reference to ensure a file is bundled
