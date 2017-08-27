@@ -9,7 +9,10 @@ const authEvents = require('./auth/events')
 $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
-  $('#save-run-button').on('click', mapEvents.getCurrentLocation)
+  $('#save-run-button').on('click', function () {
+    mapEvents.getCurrentLocation()
+    $('.sk-cube-grid').show('').delay(3000).fadeOut()
+  })
   $('#display').on('submit', '#save-run', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
   $('#show-my-button').on('click', mapEvents.onShowAllMyRuns)
