@@ -38,7 +38,7 @@ input {
 }
 
 #map {
-  height: 75vh;
+  height: 65vh;
   width: 95%;
 }
 
@@ -64,6 +64,10 @@ table {
 table, th, td {
   border-collapse: collapse;
   text-align: center;
+}
+
+#sign-up-button, #sign-in-button {
+  float: right;
 }
 
 #toggle-view {
