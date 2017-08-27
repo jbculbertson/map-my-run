@@ -44,7 +44,7 @@ const initialize = function (pos) {
       zoom: 15,
       center: loc,
       mapTypeId: 'terrain',
-      scrollwheel: false
+      gestureHandling: 'cooperative'
     }
     const map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
