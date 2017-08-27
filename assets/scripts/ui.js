@@ -101,6 +101,7 @@ const showAllMyRunsSuccess = (data) => {
   $('#display').append(showMyRunsHtml)
   let totalMiles = 0
   let totalTime = 0
+  let longestRun = 0
   let fastestPace = data.runs[0].avgPace
   for (let i = 0; i < data.runs.length; i++) {
     totalMiles += data.runs[i].distance
@@ -108,10 +109,14 @@ const showAllMyRunsSuccess = (data) => {
     if (data.runs[i].avgPace < fastestPace) {
       fastestPace = data.runs[i].avgPace
     }
+    if (data.runs[i].timeTaken > longestRun) {
+      longestRun = data.runs[i].timeTaken
+    }
   }
-  $('.miles-stat').text((totalMiles).toFixed(2) + ' miles')
+  $('.miles-stat').text((totalMiles).toFixed(2) + ' total miles')
   $('.time-stat').text(totalTime + ' minutes')
   $('.pace-stat').text(fastestPace + ' min/mile')
+  $('.longest-stat').text(longestRun + ' minutes')
   $('.stats-modal-title').text(store.user.fullName + '\'s stats')
 }
 

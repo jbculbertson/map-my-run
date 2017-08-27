@@ -50,6 +50,7 @@ const initialize = function (pos) {
     polyline = new google.maps.Polyline({
       strokeColor: 'black',
       strokeWeight: 3,
+      scrollwheel: false,
       map: map
     })
     google.maps.event.addListener(map, 'click', function (event) {
