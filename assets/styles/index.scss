@@ -10,12 +10,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   padding: 0;
 }
 
-#clear-button, #find-button, #show-all-button, #show-my-button,
-#change-password-button, #stats-button, #save-run-button,
-#settings-button {
-  display: none;
-}
-
 #delete-run {
   float: right;
 }
@@ -66,10 +60,6 @@ table, th, td {
   text-align: center;
 }
 
-#sign-up-button, #sign-in-button {
-  float: right;
-}
-
 #toggle-view {
-  margin: 0 auto;
+  display: none;
 }

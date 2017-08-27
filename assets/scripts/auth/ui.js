@@ -21,16 +21,8 @@ const signInSuccess = (data) => {
   $('#sign-up-modal').modal('hide')
   $('.sign-up-modal-header').text('')
   $('.sign-in-modal-header').text('')
-  $('#sign-in-button').hide()
-  $('#sign-up-button').hide()
-  $('#stats-button').show()
-  $('#clear-button').show()
-  $('#settings-button').show()
-  $('#show-all-button').show()
-  $('#show-my-button').show()
-  $('#save-run-button').show()
-
-  $('').hide()
+  $('#toggle-view-showInit').hide()
+  $('#toggle-view-hideInit').show()
   console.log('successful sign in')
 }
 
@@ -54,20 +46,14 @@ const changePasswordFailure = (error) => {
 
 const signOutSuccess = () => {
   $('.change-password-modal-header').text('')
-  console.log('successful sign out')
-  $('#sign-in-button').show()
-  $('#sign-up-button').show()
-  $('#stats-button').hide()
-  $('#settings-button').hide()
   $('#settings-modal').modal('hide')
-  $('#show-all-button').hide()
-  $('#show-my-button').hide()
-  $('#save-run-button').hide()
+  console.log('successful sign out')
+  $('#toggle-view-showInit').show()
+  $('#toggle-view-hideInit').hide()
   $('#display').hide()
 }
 
-const signOutFailure = (error) => {
-  console.error('signout error is', error)
+const signOutFailure = () => {
 }
 
 module.exports = {
