@@ -43,14 +43,14 @@ const initialize = function (pos) {
     const mapOptions = {
       zoom: 15,
       center: loc,
-      mapTypeId: 'terrain'
+      mapTypeId: 'terrain',
+      scrollwheel: false
     }
     const map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
     polyline = new google.maps.Polyline({
       strokeColor: 'black',
       strokeWeight: 3,
-      scrollwheel: false,
       map: map
     })
     google.maps.event.addListener(map, 'click', function (event) {
