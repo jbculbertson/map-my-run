@@ -126,7 +126,6 @@ const onSaveRun = function (event) {
   console.log('within save run, data = ' + data)
   event.preventDefault()
   api.saveRun(data)
-    .then(() => onShowAllMyRuns())
     .then(ui.saveRunSuccess)
     .catch(ui.saveRunFailure)
 }

@@ -72,6 +72,8 @@ const showOneRunSuccess = (data) => {
 const saveRunSuccess = (data) => {
   $('.save-run-modal-header').text('Successfully saved route.')
   $('.save-run').val('')
+  $('#message-board').text('')
+  $('.stats-modal-header').text('')
   console.log('within saveRunSuccess, data is ', data)
 }
 
