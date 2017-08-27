@@ -23,7 +23,7 @@ const initialize = function (route) {
   GoogleMapsLoader.load(function (google) {
     console.log('fires within GoogleMapsLoader2')
     const mapOptions = {
-      zoom: 13,
+      zoom: 14,
       center: loc,
       mapTypeId: 'terrain'
     }
