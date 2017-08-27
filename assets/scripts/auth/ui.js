@@ -2,15 +2,13 @@
 
 const store = require('../store')
 
-const signUpSuccess = (data) => {
-  console.log('successful sign up')
+const signUpSuccess = () => {
 }
 
 const signUpFailure = (error) => {
   $('.sign-up-modal-header').text('We may already have an account with that email')
   $('.sign-up').val('')
   $('.sign-in').val('')
-  console.error('signup error is', error)
 }
 
 const signInSuccess = (data) => {
@@ -23,7 +21,6 @@ const signInSuccess = (data) => {
   $('.sign-in-modal-header').text('')
   $('#toggle-view-showInit').hide()
   $('#toggle-view-hideInit').show()
-  console.log('successful sign in')
 }
 
 const signInFailure = (error) => {
@@ -47,9 +44,9 @@ const changePasswordFailure = (error) => {
 const signOutSuccess = () => {
   $('.change-password-modal-header').text('')
   $('#settings-modal').modal('hide')
-  console.log('successful sign out')
   $('#toggle-view-showInit').show()
   $('#toggle-view-hideInit').hide()
+  $('.map-view').hide()
   $('#display').hide()
 }
 

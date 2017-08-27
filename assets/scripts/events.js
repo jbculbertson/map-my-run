@@ -128,12 +128,14 @@ const onSaveRun = function (event) {
 const onShowAllRuns = function (event) {
   api.showAllRuns()
     .then(ui.showAllRunsSuccess)
+    .then($('.map-view').hide())
     .catch(ui.showAllRunsFailure)
 }
 
 const onShowAllMyRuns = function (event) {
   api.showAllMyRuns()
     .then(ui.showAllMyRunsSuccess)
+    .then($('.map-view').hide())
     .catch(ui.showAllMyRunsFailure)
 }
 
