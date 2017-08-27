@@ -97,6 +97,13 @@ const showAllMyRunsSuccess = (data) => {
   console.log('showAllMyRuns data is, ', data)
   store.runs = data.runs
   $('#display').empty()
+  if (data.runs.length === 0) {
+    $('#message-board').text('You have no saved routes.  Click \'MAP ROUTE\' to save your first route.')
+    $('.stats-modal-header').text('You have no stats.  Click \'MAP ROUTE\' to save your first route.')
+  } else {
+    $('#message-board').text('')
+    $('.stats-modal-header').text('')
+  }
   const showMyRunsHtml = showMyRunsTemplate({ runs: data.runs })
   $('#display').append(showMyRunsHtml)
   let totalMiles = 0

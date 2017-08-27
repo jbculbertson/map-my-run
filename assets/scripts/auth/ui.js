@@ -2,7 +2,8 @@
 
 const store = require('../store')
 
-const signUpSuccess = () => {
+const signUpSuccess = (data) => {
+  console.log('signUpSuccess, data is :', data)
 }
 
 const signUpFailure = () => {
@@ -47,6 +48,7 @@ const signOutSuccess = () => {
   $('.miles-stat').text('')
   $('.time-stat').text('')
   $('.pace-stat').text('')
+  $('#message-board').text('')
   $('.stats-modal-title').text('')
   $('#settings-modal').modal('hide')
   $('#toggle-view-showInit').show()

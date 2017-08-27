@@ -12,7 +12,8 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .then(() => api.signIn(data))
     .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
+    .then(mapEvents.onShowAllMyRuns)
+    .catch(ui.signUpFailure)
 }
 
 const onSignIn = function (event) {
