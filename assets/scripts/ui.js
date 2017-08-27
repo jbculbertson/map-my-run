@@ -11,8 +11,8 @@ GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
 let polyline
-let markers = []
-let polylineRoute = []
+const markers = []
+const polylineRoute = []
 
 const initialize = function (route) {
   const loc = {

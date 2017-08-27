@@ -5,7 +5,7 @@ const store = require('../store')
 const signUpSuccess = () => {
 }
 
-const signUpFailure = (error) => {
+const signUpFailure = () => {
   $('.sign-up-modal-header').text('We may already have an account with that email')
   $('.sign-up').val('')
   $('.sign-in').val('')
@@ -43,10 +43,14 @@ const changePasswordFailure = (error) => {
 
 const signOutSuccess = () => {
   $('.change-password-modal-header').text('')
+  $('.save-run-modal-header').text('')
+  $('.miles-stat').text('')
+  $('.time-stat').text('')
+  $('.pace-stat').text('')
+  $('.stats-modal-title').text('')
   $('#settings-modal').modal('hide')
   $('#toggle-view-showInit').show()
   $('#toggle-view-hideInit').hide()
-  // $('.map-view').hide()
   $('#display').hide()
 }
 

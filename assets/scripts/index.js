@@ -9,7 +9,6 @@ const authEvents = require('./auth/events')
 $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
-  // $('#find-button').on('click', mapEvents.getCurrentLocation)
   $('#save-run-button').on('click', mapEvents.getCurrentLocation)
   $('#display').on('submit', '#save-run', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
