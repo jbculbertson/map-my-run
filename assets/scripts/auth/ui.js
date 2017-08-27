@@ -46,7 +46,7 @@ const signOutSuccess = () => {
   $('#settings-modal').modal('hide')
   $('#toggle-view-showInit').show()
   $('#toggle-view-hideInit').hide()
-  $('.map-view').hide()
+  // $('.map-view').hide()
   $('#display').hide()
 }
 

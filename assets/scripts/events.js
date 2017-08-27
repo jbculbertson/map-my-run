@@ -9,6 +9,7 @@ const GoogleMapsLoader = require('google-maps')
 
 GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
+const showMapTemplate = require('./templates/map.handlebars')
 
 let polyline
 let length = 0
@@ -17,12 +18,15 @@ let markers = []
 let route = []
 
 const getCurrentLocation = function () {
+  $('#display').empty()
   console.log('fires within getCurrentLocation')
   navigator.geolocation.getCurrentPosition(function (position) {
     const pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     }
+    const showMapHtml = showMapTemplate()
+    $('#display').append(showMapHtml)
     initialize(pos)
     console.log('within getCurrentLocation, pos is ', pos)
   })

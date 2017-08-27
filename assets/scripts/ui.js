@@ -1,6 +1,7 @@
 'use strict'
 const showAllRunsTemplate = require('./templates/show-all-runs.handlebars')
 const showMyRunsTemplate = require('./templates/show-my-runs.handlebars')
+
 const store = require('./store')
 
 const env = require('../../.env.js')
@@ -69,7 +70,6 @@ const showOneRunSuccess = (data) => {
 }
 
 const saveRunSuccess = (data) => {
-
   $('.save-run-modal-header').text('Successfully saved route.')
   $('.save-run').val('')
   console.log('within saveRunSuccess, data is ', data)
