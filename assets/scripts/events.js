@@ -68,7 +68,11 @@ const initialize = function (pos) {
       }
       length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
-      $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
+      $('#distance-input').val(mileLength)
+      $('#distance-input').css('background-color', 'red')
+      setTimeout(function () {
+        $('#distance-input').css('background-color', 'white')
+      }, 1000)
     }
     function addPoint (latlng) {
       console.log('fires within AddPoint, latlng is ', latlng)
@@ -90,6 +94,9 @@ const initialize = function (pos) {
       // $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
       $('#distance-input').val(mileLength)
       $('#distance-input').css('background-color', 'green')
+      setTimeout(function () {
+        $('#distance-input').css('background-color', 'white')
+      }, 1000)
       console.log('Total miles is ' + mileLength)
     }
     // clearBoard 'function'
