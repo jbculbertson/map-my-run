@@ -45,8 +45,10 @@ This may sound like a daunting list, and at times it was, but I was always focus
 on the small issue in front of me, which made them much easier to manage.
 
 ## Links
-* [Deployed Site]('https://jbculbertson.github.io/map-my-run/')
-* [Back End Repo]('https://github.com/jbculbertson/run-tracker-back')
+* [Front End Repo](https://github.com/jbculbertson/map-my-run)
+* [Deployed Site](https://jbculbertson.github.io/map-my-run/)
+* [Back End Repo](https://github.com/jbculbertson/run-tracker-back)
+* [Deployed API](https://glacial-oasis-55159.herokuapp.com)
 
 
 ## Technologies Used
