@@ -18,9 +18,9 @@
 
 ## Wireframes
 
-[Landing Page Wireframe](http://i.imgur.com/U7rJuzb.jpg)
-[Main UX Wireframe](http://i.imgur.com/RKaltDO.jpg)
-[Feed Card Wireframe](http://i.imgur.com/g4RYGAI.jpg)
+  1. [Landing Page Wireframe](http://i.imgur.com/U7rJuzb.jpg)
+  2. [Main UX Wireframe](http://i.imgur.com/RKaltDO.jpg)
+  3. [Feed Card Wireframe](http://i.imgur.com/g4RYGAI.jpg)
 
 ## Entity Relationship Diagram
 
