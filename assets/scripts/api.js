@@ -15,6 +15,18 @@ const saveRun = function (data) {
   })
 }
 
+const likeRun = function (data) {
+  console.log('made it to Like API call, data is :', data)
+  return $.ajax({
+    url: config.apiOrigin + '/likes',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const showAllRuns = function () {
   return $.ajax({
     url: config.apiOrigin + '/runs',
@@ -62,5 +74,6 @@ module.exports = {
   showAllRuns,
   showAllMyRuns,
   showOneRun,
-  deleteRun
+  deleteRun,
+  likeRun
 }

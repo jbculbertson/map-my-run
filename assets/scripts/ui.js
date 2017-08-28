@@ -143,6 +143,14 @@ const deleteRunFailure = (error) => {
   console.error('within deleteFail, error is ' + error.responseText)
 }
 
+const likeRunSuccess = (data) => {
+  console.log(data)
+}
+
+const likeRunFailure = (error) => {
+  console.error('within likeRunFailure, error is ' + error.responseText)
+}
+
 module.exports = {
   saveRunSuccess,
   saveRunFailure,
@@ -153,5 +161,7 @@ module.exports = {
   showAllMyRunsSuccess,
   showAllMyRunsFailure,
   deleteRunSuccess,
-  deleteRunFailure
+  deleteRunFailure,
+  likeRunSuccess,
+  likeRunFailure
 }

@@ -1,8 +1,13 @@
 {{#each runs as |run|}}
 <div class="panel panel-default">
-  <div class="panel-heading"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-           <strong>{{run.ownerName}}</strong> ran <strong>{{run.distance}}</strong> miles on <strong>{{#formatDate run.date}}
-           {{/formatDate}}</strong></div>
+  <div class="panel-heading">
+    <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+    <strong>{{run.ownerName}}</strong> ran
+    <strong>{{run.distance}}</strong> miles on
+    <strong>{{#formatDate run.date}}
+           {{/formatDate}}</strong>
+  </div>
+
   <table class="table">
     <tr>
      <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
@@ -26,5 +31,7 @@
        <i class="fa fa-map-marker"></i> Map</button></td>
    </tr>
   </table>
+  <button class="btn btn-default btn-sm" id="like-run" data-id="{{run._id}}">
+  <i class="fa fa-thumbs-o-up fa-2x"></i>  {{run.likes.length}}</button>
 </div>
 {{/each}}

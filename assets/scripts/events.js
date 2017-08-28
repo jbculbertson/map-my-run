@@ -3,6 +3,7 @@
 const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./store')
 
 const GoogleMapsLoader = require('google-maps')
 
@@ -142,6 +143,19 @@ const onSaveRun = function (event) {
     .catch(ui.saveRunFailure)
 }
 
+const onLikeRun = function (event) {
+  const data = {
+    'like': {
+      '_owner': store.user.id,
+      '_run_id': this.dataset.id
+    }
+  }
+  api.likeRun(data)
+    .then(ui.likeRunSuccess)
+    .then(() => onShowAllMyRuns())
+    .catch(ui.likeRunFailure)
+}
+
 const onShowAllRuns = function (event) {
   api.showAllRuns()
     .then(ui.showAllRunsSuccess)
@@ -180,5 +194,6 @@ module.exports = {
   onShowAllRuns,
   onShowAllMyRuns,
   onShowOneRun,
-  onDeleteRun
+  onDeleteRun,
+  onLikeRun
 }
