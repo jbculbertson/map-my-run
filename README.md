@@ -1,35 +1,35 @@
 # RunTracker
-..Created by Jeff Culbertson
+Created by Jeff Culbertson
 
 ## App Features
 
-...When you login, you'll be able to see a feed of your runs, or runs posted by
+When you login, you'll be able to see a feed of your runs, or runs posted by
 your friends.
 
-(http://i.imgur.com/k0NXdTM.png)
+![Image](http://i.imgur.com/k0NXdTM.png)
 
-...Click on Map Route to view an interactive map, centered around where you are
+Click on Map Route to view an interactive map, centered around where you are
 currently.  You can click to add markers and create a route.
 
-(http://i.imgur.com/AsbFclU.png)
+![Image](http://i.imgur.com/AsbFclU.png)
 
-...View real-time statistics at anypoint.
+View real-time statistics at anypoint.
 
-(http://i.imgur.com/Mkgbcl3.png)
+![Image](http://i.imgur.com/Mkgbcl3.png)
 
 ## Installation instructions for any dependencies
 * NPM install to install dependencies
 
 ## Approach to building
 
-...As my last project for WDI, RunTracker is the culmination of 12+ weeks of intense
+As my last project for WDI, RunTracker is the culmination of 12+ weeks of intense
 learning, and I felt like it came together nicely in this project.
 
-...This project began when we had to research a topic of our choosing.  I chose the
+This project began when we had to research a topic of our choosing.  I chose the
 Google Maps API because I wanted to access a third party API, and I knew that
 Google Maps brought with it a ton of cool features.
 
-...When I started building, I began with the most granular, and grew from there...
+When I started building, I began with the most granular, and grew from there
   1. Get a google map to display on my screen
   2. Get the map to center around a provided location
   3. Place one marker on the map
@@ -41,7 +41,7 @@ Google Maps brought with it a ton of cool features.
   9. When recalled from database, turn coordinates into another map with markers and
   polylines.
 
-...This may sound like a daunting list, and at times it was, but I was always focused
+This may sound like a daunting list, and at times it was, but I was always focused
 on the small issue in front of me, which made them much easier to manage.
 
 ## Links
