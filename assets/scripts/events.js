@@ -116,7 +116,11 @@ const initialize = function (pos) {
           strokeWeight: 3,
           map: map
         })
-        $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
+        $('#distance-input').val(mileLength)
+        $('#distance-input').css('background', 'linear-gradient(to right, #fffbd5, #b20a2c)')
+        setTimeout(function () {
+          $('#distance-input').css('background', 'white')
+        }, 1000)
         console.log('Total miles is ' + mileLength)
       })
     })
