@@ -1,11 +1,26 @@
-<div class="map-view">
-  <h3 class="save-run-modal-header"></h3>
-  <div id="map"></div>
+<div class="map-view row">
+  <div class="col-md-3">
+    <h3 class="save-run-modal-header"></h3>
+    <i class="fa fa-hand-pointer-o fa-2x" aria-hidden="true"></i>
+    <p>Click on the map to place a marker and start your route</p>
+    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+    <p>Remove any marker with a click</p>
+    <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+    <p>Save your route with additional details</p>
   <form id="save-run">
     <div class="form group">
       <label class="col-sm-3">Duration</label>
       <div class="col-sm-9">
         <input class="save-run" type="text" name="run[timeTaken]" value="" placeholder="duration in minutes"><br>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-sm-3">Distance</label>
+      <div class="col-sm-9">
+        <div class="nativeDatePicker">
+          <input class="save-run" type="text" id="distance-input" name="run[timeTaken]">
+          <span class="validity"></span>
+        </div>
       </div>
     </div>
     <div class="form group">
@@ -24,4 +39,8 @@
       </div>
     </div>
   </form>
+</div>
+<div class="col-md-9"
+  <div id="map"></div>
+  <div>
 </div>

@@ -87,7 +87,9 @@ const initialize = function (pos) {
       })
       length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
-      $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
+      // $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
+      $('#distance-input').val(mileLength)
+      $('#distance-input').css('background-color', 'green')
       console.log('Total miles is ' + mileLength)
     }
     // clearBoard 'function'
