@@ -1,32 +1,30 @@
 {{#each runs as |run|}}
 <div class="panel panel-default">
-  <!-- Default panel contents -->
   <div class="panel-heading"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
            <strong>{{run.ownerName}}</strong> ran <strong>{{run.distance}}</strong> miles on <strong>{{#formatDate run.date}}
            {{/formatDate}}</strong></div>
-  <!-- Table -->
   <table class="table">
     <tr>
      <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
      <th><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></th>
      <th><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></th>
+     <th><i class="fa fa-cog fa-2x" aria-hidden="true"></i></th>
    </tr>
     <tr>
      <td><h4><strong>{{run.distance}}</strong></h4></td>
      <td><h4><strong>{{run.timeTaken}}</strong></h4></td>
      <td><h4><strong>{{run.avgPace}}</strong></h4></td>
+     <td><button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
+         <i class="fa fa-trash-o"></i> Delete</button></td>
    </tr>
     <tr>
      <td><h6>DISTANCE (MI)</h6></td>
      <td><h6>MINUTES</h6></td>
      <td><h6>AVERAGE PACE</h6></td>
+     <td><button class="btn btn-success btn-sm" id="show-one-run" data-id="{{run._id}}"
+     data-toggle="modal" data-target="#show-run-modal">
+       <i class="fa fa-map-marker"></i> Map</button></td>
    </tr>
   </table>
-  <button class="btn btn-danger" id="delete-run" data-id="{{run._id}}">
-      <i class="fa fa-trash-o"></i></button>
-    <!-- <i class="fa fa-cog" aria-hidden="true"></i> -->
-    <button class="btn btn-success" id="show-one-run" data-id="{{run._id}}"
-    data-toggle="modal" data-target="#show-run-modal">
-      <i class="fa fa-map-marker"></i></button>
 </div>
 {{/each}}
