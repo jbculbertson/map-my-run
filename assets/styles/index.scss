@@ -1,5 +1,6 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
 .btn {
   margin: 5px;
@@ -23,6 +24,17 @@ input {
   width: 95%;
 }
 
+.jumbotron {
+  background-image: url('./images/runner.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+#jumbo-title {
+  color: white;
+  font-family: 'Rock Salt', cursive;
+}
+
 .modal-body {
   overflow-y: auto;
 }
@@ -42,6 +54,7 @@ input {
 
 .navbar {
   margin-bottom: 0;
+  display: none;
 }
 
 .panel {

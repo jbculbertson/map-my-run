@@ -20,8 +20,9 @@ const signInSuccess = (data) => {
   $('#sign-up-modal').modal('hide')
   $('.sign-up-modal-header').text('')
   $('.sign-in-modal-header').text('')
-  $('#toggle-view-showInit').hide()
   $('#toggle-view-hideInit').show()
+  $('.jumbotron').hide()
+  $('.navbar').show()
 }
 
 const signInFailure = (error) => {
@@ -51,9 +52,10 @@ const signOutSuccess = () => {
   $('#message-board').text('')
   $('.stats-modal-title').text('')
   $('#settings-modal').modal('hide')
-  $('#toggle-view-showInit').show()
   $('#toggle-view-hideInit').hide()
   $('#display').hide()
+  $('.jumbotron').show()
+  $('.navbar').hide()
 }
 
 const signOutFailure = () => {
