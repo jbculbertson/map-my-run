@@ -3,8 +3,6 @@ const showAllRunsTemplate = require('./templates/show-all-runs.handlebars')
 const showMyRunsTemplate = require('./templates/show-my-runs.handlebars')
 
 const store = require('./store')
-
-// const env = require('../../.env.js')
 const GoogleMapsLoader = require('google-maps')
 
 GoogleMapsLoader.KEY = 'AIzaSyCFiPNmm6GA0YPgYC6x-pAJ5Xkj3oCSITw'

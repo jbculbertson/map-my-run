@@ -2,7 +2,8 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-           <strong>{{run.ownerName}}</strong> ran <strong>{{run.distance}}</strong> miles  {{run.date}}</div>
+           <strong>{{run.ownerName}}</strong> ran <strong>{{run.distance}}</strong> miles on <strong>{{#formatDate run.date}}
+           {{/formatDate}}</strong></div>
   <!-- Table -->
   <table class="table">
     <tr>

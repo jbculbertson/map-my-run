@@ -4,7 +4,6 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
-// const env = require('../../.env.js')
 const GoogleMapsLoader = require('google-maps')
 
 GoogleMapsLoader.KEY = 'AIzaSyCFiPNmm6GA0YPgYC6x-pAJ5Xkj3oCSITw'

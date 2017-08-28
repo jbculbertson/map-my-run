@@ -4,9 +4,6 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const mapEvents = require('./events')
 const authEvents = require('./auth/events')
-const moment = require('moment')
-const Handlebars = require('handlebars')
-// let markers = []
 
 $(() => {
   setAPIOrigin(location, config)
@@ -22,9 +19,6 @@ $(() => {
   $('#display').on('click', '#show-one-run', mapEvents.onShowOneRun)
   $('.btn-group').on('click', '.btn', function () {
     $(this).addClass('active').siblings().removeClass('active')
-  })
-  Handlebars.registerHelper('formatDate', function (date) {
-    console.log(moment(date).format('MMMM DD YYYY'))
   })
 })
 
