@@ -4,10 +4,10 @@ const showMyRunsTemplate = require('./templates/show-my-runs.handlebars')
 
 const store = require('./store')
 
-const env = require('../../.env.js')
+// const env = require('../../.env.js')
 const GoogleMapsLoader = require('google-maps')
 
-GoogleMapsLoader.KEY = env.GOOGLE_MAPS_API_KEY
+GoogleMapsLoader.KEY = 'AIzaSyCFiPNmm6GA0YPgYC6x-pAJ5Xkj3oCSITw'
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
 
 let polyline
