@@ -1,20 +1,30 @@
 {{#each runs as |run|}}
 <div class="panel panel-default">
   <div class="panel-heading">
-    <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-    <strong>{{run.ownerName}}</strong> ran
-    <strong>{{run.distance}}</strong> miles on
-    <strong>{{#formatDate run.date}}
-           {{/formatDate}}</strong>
-    <button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
-      <i class="fa fa-heart"></i>  {{run.likes.length}}</button>
-    <button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
-      <i class="fa fa-trash-o"></i></button>
-    <button class="btn btn-success btn-sm" id="show-one-run" data-id="{{run._id}}"
-      data-toggle="modal" data-target="#show-run-modal">
-      <i class="fa fa-map-marker"></i></button>
+    <div class="col-sm-2">
+      <i class="fa fa-user-circle-o fa-4x" id="user-icon" aria-hidden="true"></i>
+    </div>
+    <div class="col-sm-6">
+      <h4>
+      <strong>{{run.ownerName}}</strong> ran
+      <strong>{{run.distance}}</strong> miles
+    </h4>
+      <p>
+      {{#formatDate run.date}}
+             {{/formatDate}}
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-success btn-sm" id="show-one-run" data-id="{{run._id}}"
+        data-toggle="modal" data-target="#show-run-modal">
+        <i class="fa fa-map-marker"></i> Map</button>
+      <button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
+        <i class="fa fa-trash-o"></i> Delete</button>
+      <button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
+        <i class="fa fa-heart"></i>  {{run.likes.length}}</button>
+    </div>
   </div>
-
+  <div class="panel-body">
   <table class="table">
     <tr>
      <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
@@ -32,5 +42,6 @@
      <td><h6>AVERAGE PACE</h6></td>
    </tr>
   </table>
+</div>
 </div>
 {{/each}}

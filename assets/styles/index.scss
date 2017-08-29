@@ -2,6 +2,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
+p, h3 {
+  letter-spacing: 1px;
+}
+
 .btn {
   margin: 5px;
 }
@@ -10,10 +14,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   height: 100vh;
   margin: 0;
   padding: 0;
-}
-
-#delete-run, #show-one-run, #like-run {
-  float: right;
 }
 
 #display {
@@ -70,14 +70,22 @@ input {
   width: 75%;
 }
 
-table {
-}
-
 table,
 th,
 td {
   border-collapse: collapse;
   text-align: center;
+}
+
+
+@media (min-width: 770px) {
+  .panel-heading {
+    height: 100px;
+  }
+}
+
+#user-icon {
+  margin-right: 5px;
 }
 
 .sk-cube-grid {
