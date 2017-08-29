@@ -2,6 +2,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
+body {
+  background-image: url('http://i.imgur.com/yGhNllG.jpg');
+  background-position: cover;
+
+}
+
 p, h3 {
   letter-spacing: 1px;
 }
@@ -60,6 +66,7 @@ input {
 }
 
 .navbar {
+  background-image: url('http://i.imgur.com/yGhNllG.jpg');
   display: none;
   margin-bottom: 0;
 }
