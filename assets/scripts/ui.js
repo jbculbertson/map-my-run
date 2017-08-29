@@ -92,8 +92,19 @@ const removeMineFromAll = (data) => {
 }
 
 const showAllRunsSuccess = (data) => {
-  console.log(data)
+  console.log('within show all, data is :', data)
   store.runs = data.runs
+  //
+  let globalFastestPace = data.runs[0].avgPace
+  let globalFastestPaceOwner = null
+  for (let i = 0; i < data.runs.length; i++) {
+    if (data.runs[i].avgPace < globalFastestPace) {
+      globalFastestPace = data.runs[i].avgPace
+      globalFastestPaceOwner = data.runs[i].ownerName
+    }
+  }
+  $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
+  //
   let filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
