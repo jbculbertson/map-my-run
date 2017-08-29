@@ -1,14 +1,14 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt');
+@import 'colors';
 
 body {
   background-image: url('http://i.imgur.com/yGhNllG.jpg');
   background-position: cover;
-
 }
 
-p, h3 {
+p, h4 {
   letter-spacing: 1px;
 }
 
@@ -39,8 +39,12 @@ input {
 }
 
 #jumbo-title {
-  color: white;
+  color: $white;
   font-family: 'Rock Salt', cursive;
+}
+
+#map-key {
+  background-color: $opaque-white;
 }
 
 #message-board {
@@ -75,6 +79,9 @@ input {
   margin: 0 auto;
   margin-top: 10px;
   width: 75%;
+}
+
+.panel-heading {
 }
 
 table,
