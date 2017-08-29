@@ -7,6 +7,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .container-fluid {
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -28,11 +29,17 @@ input {
   background-image: url('./images/runner.jpg');
   background-size: cover;
   height: 100vh;
+  margin-bottom: 0;
 }
 
 #jumbo-title {
   color: white;
   font-family: 'Rock Salt', cursive;
+}
+
+#message-board {
+  display: none;
+  padding-top: 70px;
 }
 
 .modal-body {
@@ -63,12 +70,7 @@ input {
   width: 75%;
 }
 
-.row-fluid {
-  padding-top: 70px;
-}
-
 table {
-  // border: 1px solid black;
 }
 
 table,

@@ -21,6 +21,7 @@ const signInSuccess = (data) => {
   $('.sign-up-modal-header').text('')
   $('.sign-in-modal-header').text('')
   $('#toggle-view-hideInit').show()
+  $('#message-board').show()
   $('.jumbotron').hide()
   $('.navbar').show()
 }
@@ -54,6 +55,7 @@ const signOutSuccess = () => {
   $('#settings-modal').modal('hide')
   $('#toggle-view-hideInit').hide()
   $('#display').hide()
+  $('#message-board').hide()
   $('.jumbotron').show()
   $('.navbar').hide()
 }
