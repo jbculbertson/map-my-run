@@ -81,11 +81,22 @@ const saveRunFailure = (error) => {
   console.error(error.responseText)
 }
 
+const removeMineFromAll = (data) => {
+  let filteredData = []
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]._owner !== store.user._id) {
+      filteredData.push(data[i])
+    }
+  }
+  return filteredData
+}
+
 const showAllRunsSuccess = (data) => {
   console.log(data)
   store.runs = data.runs
+  let filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
-  const showAllRunsHtml = showAllRunsTemplate({ runs: data.runs })
+  const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
   $('#display').append(showAllRunsHtml)
 }
 
