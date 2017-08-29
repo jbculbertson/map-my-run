@@ -35,6 +35,16 @@ const getCurrentLocation = function () {
 const initialize = function (pos) {
   console.log('fires within initialize')
   GoogleMapsLoader.load(function (google) {
+// this section clears the map on load - needed due to a bug that happened when
+// you had a map with markers, and then clicked to a new tab.  When you re-init the
+// map it wouldn't let you add polyline.
+    markers = []
+    route = []
+    polyline = new google.maps.Polyline({
+      strokeColor: 'black',
+      strokeWeight: 3,
+      map: map
+    })
     console.log('fires within GoogleMapsLoader')
     const loc = {
       lat: pos.lat,
