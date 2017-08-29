@@ -97,13 +97,20 @@ const showAllRunsSuccess = (data) => {
   //
   let globalFastestPace = data.runs[0].avgPace
   let globalFastestPaceOwner = null
+  let globalLongestRun = 0
+  let globalLongestRunOwner = null
   for (let i = 0; i < data.runs.length; i++) {
     if (data.runs[i].avgPace < globalFastestPace) {
       globalFastestPace = data.runs[i].avgPace
       globalFastestPaceOwner = data.runs[i].ownerName
     }
+    if (data.runs[i].timeTaken > globalLongestRun) {
+      globalLongestRun = data.runs[i].timeTaken
+      globalLongestRunOwner = data.runs[i].ownerName
+    }
   }
   $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
+  $('.global-longest-stat').text(globalLongestRun + ' minutes (' + globalLongestRunOwner + ')')
   //
   let filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
