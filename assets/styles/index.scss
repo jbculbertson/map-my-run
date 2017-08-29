@@ -60,8 +60,8 @@ input {
 }
 
 .navbar {
-  margin-bottom: 0;
   display: none;
+  margin-bottom: 0;
 }
 
 .panel {
@@ -78,10 +78,6 @@ th,
 td {
   border-collapse: collapse;
   text-align: center;
-}
-
-#toggle-view-hideInit {
-  display: none;
 }
 
 .sk-cube-grid {
