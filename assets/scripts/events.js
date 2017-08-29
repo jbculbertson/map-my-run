@@ -156,6 +156,19 @@ const onLikeRun = function (event) {
     .catch(ui.likeRunFailure)
 }
 
+const onLikeFriendsRun = function (event) {
+  const data = {
+    'like': {
+      '_owner': store.user.id,
+      '_run_id': this.dataset.id
+    }
+  }
+  api.likeRun(data)
+    .then(ui.likeRunSuccess)
+    .then(() => onShowAllRuns())
+    .catch(ui.likeRunFailure)
+}
+
 const onShowAllRuns = function (event) {
   api.showAllRuns()
     .then(ui.showAllRunsSuccess)
@@ -195,5 +208,6 @@ module.exports = {
   onShowAllMyRuns,
   onShowOneRun,
   onDeleteRun,
-  onLikeRun
+  onLikeRun,
+  onLikeFriendsRun
 }

@@ -18,6 +18,7 @@ $(() => {
   $('#display').on('click', '#delete-run', mapEvents.onDeleteRun)
   $('#display').on('click', '#show-one-run', mapEvents.onShowOneRun)
   $('#display').on('click', '#like-run', mapEvents.onLikeRun)
+  $('#display').on('click', '#like-friends-run', mapEvents.onLikeFriendsRun)
   $('.btn-group').on('click', '.btn', function () {
     $(this).addClass('active').siblings().removeClass('active')
   })

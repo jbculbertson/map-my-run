@@ -6,32 +6,33 @@
     <strong>{{run.distance}}</strong> miles on
     <strong>{{#formatDate run.date}}
            {{/formatDate}}</strong>
+    <button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
+                <i class="fa fa-trash-o"></i> Delete</button>
   </div>
 
   <table class="table">
     <tr>
+     <th><i class="fa fa-cog fa-2x" aria-hidden="true"></i></th>
      <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
      <th><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></th>
      <th><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></th>
-     <th><i class="fa fa-cog fa-2x" aria-hidden="true"></i></th>
    </tr>
     <tr>
+     <td><button class="btn btn-success btn-sm" id="show-one-run" data-id="{{run._id}}"
+      data-toggle="modal" data-target="#show-run-modal">
+        <i class="fa fa-map-marker"></i> Map</button></td>
      <td><h4><strong>{{run.distance}}</strong></h4></td>
      <td><h4><strong>{{run.timeTaken}}</strong></h4></td>
      <td><h4><strong>{{run.avgPace}}</strong></h4></td>
-     <td><button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
-         <i class="fa fa-trash-o"></i> Delete</button></td>
    </tr>
     <tr>
+     <td><button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
+     <i class="fa fa-thumbs-o-up fa-2x"></i>  {{run.likes.length}}</button></td>
      <td><h6>DISTANCE (MI)</h6></td>
      <td><h6>MINUTES</h6></td>
      <td><h6>AVERAGE PACE</h6></td>
-     <td><button class="btn btn-success btn-sm" id="show-one-run" data-id="{{run._id}}"
-     data-toggle="modal" data-target="#show-run-modal">
-       <i class="fa fa-map-marker"></i> Map</button></td>
    </tr>
   </table>
-  <button class="btn btn-default btn-sm" id="like-run" data-id="{{run._id}}">
-  <i class="fa fa-thumbs-o-up fa-2x"></i>  {{run.likes.length}}</button>
+
 </div>
 {{/each}}
