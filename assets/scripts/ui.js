@@ -100,7 +100,8 @@ const getGlobalTotalTime = (data) => {
   const maxTotalTimeOwner = Object.keys(globalTotalTime).reduce(function (a, b) {
     return globalTotalTime[a] > globalTotalTime[b] ? a : b
   })
-  $('.global-time-stat').text(maxTotalTime + ' minutes (' + maxTotalTimeOwner + ')')
+  $('.global-time-stat').text(maxTotalTime + ' minutes')
+  $('.global-timeOwner-stat').text(maxTotalTimeOwner)
 }
 
 const getGlobalTotalDistance = (data) => {
@@ -116,7 +117,8 @@ const getGlobalTotalDistance = (data) => {
   const maxTotalDistanceOwner = Object.keys(globalTotalDistance).reduce(function (a, b) {
     return globalTotalDistance[a] > globalTotalDistance[b] ? a : b
   })
-  $('.global-distance-stat').text(maxTotalDistance + ' miles (' + maxTotalDistanceOwner + ')')
+  $('.global-distance-stat').text(maxTotalDistance + ' miles')
+  $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
 }
 
 const getGlobalLongestRun = (data) => {
@@ -128,7 +130,8 @@ const getGlobalLongestRun = (data) => {
       globalLongestRunOwner = data.runs[i].ownerName
     }
   }
-  $('.global-longest-stat').text(globalLongestRun + ' minutes (' + globalLongestRunOwner + ')')
+  $('.global-longest-stat').text(globalLongestRun + ' minutes')
+  $('.global-longestOwner-stat').text(globalLongestRunOwner)
 }
 
 const getGlobalFastestPace = (data) => {
@@ -140,7 +143,18 @@ const getGlobalFastestPace = (data) => {
       globalFastestPaceOwner = data.runs[i].ownerName
     }
   }
-  $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
+  $('.global-pace-stat').text(globalFastestPace + ' min/mile')
+  if (globalFastestPaceOwner === store.user.fullName) {
+    $('.global-paceOwner-stat').text(globalFastestPaceOwner)
+    $('.global-paceOwner-stat').css('font-weight', 'bold')
+    $('.global-paceOwner-stat').css('line-height', '2.25')
+    $('.global-paceOwner-stat').css('color', 'red')
+    $('.global-paceOwner-stat').css('transform', 'scale(1.5)')
+    $('.global-paceOwner-stat').css('transition-delay', '1s')
+    $('.hide-stat-icon').show()
+  } else {
+    $('.global-paceOwner-stat').text(globalFastestPaceOwner)
+  }
 }
 
 const showAllRunsSuccess = (data) => {
@@ -160,7 +174,7 @@ const getMyTotalMiles = (data) => {
   for (let i = 0; i < data.runs.length; i++) {
     totalMiles += data.runs[i].distance
   }
-  $('.miles-stat').text((totalMiles).toFixed(2) + ' total miles')
+  $('.miles-stat').text((totalMiles).toFixed(2) + ' miles')
 }
 
 const getMyTotalTime = (data) => {
