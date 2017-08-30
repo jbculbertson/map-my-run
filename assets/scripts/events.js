@@ -20,16 +20,24 @@ let route = []
 const getCurrentLocation = function () {
   $('#display').empty()
   console.log('fires within getCurrentLocation')
-  navigator.geolocation.getCurrentPosition(function (position) {
-    const pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    }
-    const showMapHtml = showMapTemplate()
-    $('#display').append(showMapHtml)
-    initialize(pos)
-    console.log('within getCurrentLocation, pos is ', pos)
-  })
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      const showMapHtml = showMapTemplate()
+      $('#display').append(showMapHtml)
+      initialize(pos)
+      console.log('within getCurrentLocation, pos is ', pos)
+    }, function () {
+      $('#message-board').text('This browser does not support Geolocation')
+      initialize({lat: 42, lng: 42})
+    })
+  } else {
+    $('#message-board').text('This browser does not support Geolocation')
+    initialize({lat: 42, lng: 42})
+  }
 }
 
 const onShowStats = function () {
