@@ -24,6 +24,9 @@ $(() => {
   $('.btn-group').on('click', '.btn', function () {
     $(this).addClass('active').siblings().removeClass('active')
   })
+  $('.modal').on('shown.bs.modal', function () {
+    $(this).find('input:first').focus()
+  })
 })
 
 // use require without a reference to ensure a file is bundled

@@ -20,6 +20,7 @@ const signInSuccess = (data) => {
   $('#sign-up-modal').modal('hide')
   $('.sign-up-modal-header').text('')
   $('.sign-in-modal-header').text('')
+  $('#personal-stats-name').text(store.user.fullName + '\'s Records')
   $('#display').show()
   $('#message-board').show()
   $('.jumbotron').hide()
