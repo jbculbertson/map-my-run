@@ -248,8 +248,8 @@ const showMineForStatsSuccess = (data) => {
   getMyFastestPace(data)
 }
 
-const indesForStatsFailure = (error) => {
-  console.error('within likeRunFailure, error is ' + error.responseText)
+const indexForStatsFailure = (error) => {
+  console.error('within indexForStatsFailure, error is ' + error.responseText)
 }
 
 module.exports = {
@@ -267,6 +267,6 @@ module.exports = {
   likeRunFailure,
   getGlobalTotalTime,
   indexForStatsSuccess,
-  indesForStatsFailure,
+  indexForStatsFailure,
   showMineForStatsSuccess
 }
