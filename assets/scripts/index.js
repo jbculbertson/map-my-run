@@ -11,7 +11,13 @@ $(() => {
   $('#save-run-button').on('click', function () {
     $('#stats-body').hide()
     mapEvents.getCurrentLocation()
+    $('#loader-modal-title').text('Map is loading.')
+    $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
+    $('.loader').show('').delay(3000).fadeOut()
     $('.sk-cube-grid').show('').delay(3000).fadeOut()
+    setTimeout(function () {
+      $('#loader-modal').modal('hide')
+    }, 3000)
   })
   $('#display').on('submit', '#save-run', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
