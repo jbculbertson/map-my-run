@@ -32,11 +32,11 @@ const getCurrentLocation = function () {
       console.log('within getCurrentLocation, pos is ', pos)
     }, function () {
       $('#message-board').text('This browser does not support Geolocation')
-      initialize({lat: 42, lng: 42})
+      initialize({ lat: 42.3601, lng: -71.0589 })
     })
   } else {
     $('#message-board').text('This browser does not support Geolocation')
-    initialize({lat: 42, lng: 42})
+    initialize({ lat: 42.3601, lng: -71.0589 })
   }
 }
 
