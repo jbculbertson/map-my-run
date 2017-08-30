@@ -160,6 +160,42 @@ const showAllRunsFailure = (error) => {
   console.error(error.responseText)
 }
 
+const getMyTotalMiles = (data) => {
+  let totalMiles = 0
+  for (let i = 0; i < data.runs.length; i++) {
+    totalMiles += data.runs[i].distance
+  }
+  $('.miles-stat').text((totalMiles).toFixed(2) + ' total miles')
+}
+
+const getMyTotalTime = (data) => {
+  let totalTime = 0
+  for (let i = 0; i < data.runs.length; i++) {
+    totalTime += data.runs[i].timeTaken
+  }
+  $('.time-stat').text(totalTime + ' minutes')
+}
+
+const getMyLongestRun = (data) => {
+  let longestRun = 0
+  for (let i = 0; i < data.runs.length; i++) {
+    if (data.runs[i].timeTaken > longestRun) {
+      longestRun = data.runs[i].timeTaken
+    }
+  }
+  $('.longest-stat').text(longestRun + ' minutes')
+}
+
+const getMyFastestPace = (data) => {
+  let fastestPace = data.runs[0].avgPace
+  for (let i = 0; i < data.runs.length; i++) {
+    if (data.runs[i].avgPace < fastestPace) {
+      fastestPace = data.runs[i].avgPace
+    }
+  }
+  $('.pace-stat').text(fastestPace + ' min/mile')
+}
+
 const showAllMyRunsSuccess = (data) => {
   console.log('showAllMyRuns data is, ', data)
   store.runs = data.runs
@@ -173,24 +209,10 @@ const showAllMyRunsSuccess = (data) => {
   }
   const showMyRunsHtml = showMyRunsTemplate({ runs: data.runs })
   $('#display').append(showMyRunsHtml)
-  let totalMiles = 0
-  let totalTime = 0
-  let longestRun = 0
-  let fastestPace = data.runs[0].avgPace
-  for (let i = 0; i < data.runs.length; i++) {
-    totalMiles += data.runs[i].distance
-    totalTime += data.runs[i].timeTaken
-    if (data.runs[i].avgPace < fastestPace) {
-      fastestPace = data.runs[i].avgPace
-    }
-    if (data.runs[i].timeTaken > longestRun) {
-      longestRun = data.runs[i].timeTaken
-    }
-  }
-  $('.miles-stat').text((totalMiles).toFixed(2) + ' total miles')
-  $('.time-stat').text(totalTime + ' minutes')
-  $('.pace-stat').text(fastestPace + ' min/mile')
-  $('.longest-stat').text(longestRun + ' minutes')
+  getMyTotalMiles(data)
+  getMyTotalTime(data)
+  getMyLongestRun(data)
+  getMyFastestPace(data)
   $('.stats-modal-title').text(store.user.fullName + '\'s Stats & Overall Leaderboard')
 }
 
