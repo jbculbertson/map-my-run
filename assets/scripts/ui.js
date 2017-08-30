@@ -109,10 +109,26 @@ const showAllRunsSuccess = (data) => {
       globalLongestRunOwner = data.runs[i].ownerName
     }
   }
+  const globalTotalTime = {}
+  for (let i = 0; i < data.runs.length; i++) {
+    if (globalTotalTime[data.runs[i].ownerName]) {
+      globalTotalTime[data.runs[i].ownerName] += data.runs[i].timeTaken
+      console.log('within loop, data is: ', globalTotalTime[data.runs[i].ownerName] += data.runs[i].timeTaken)
+    } else {
+      globalTotalTime[data.runs[i].ownerName] = data.runs[i].timeTaken
+    }
+  }
+  const maxTotalTime = Object.values(globalTotalTime).sort((prev, next) => next - prev)[0]
+  const maxTotalTimeOwner = Object.keys(globalTotalTime).reduce(function (a, b) {
+    return globalTotalTime[a] > globalTotalTime[b] ? a : b
+  })
+  console.log('within showAllSuccess, obj is: ', globalTotalTime)
+  console.log('within showAllSuccess, largest val is: ', maxTotalTime)
   $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
   $('.global-longest-stat').text(globalLongestRun + ' minutes (' + globalLongestRunOwner + ')')
+  $('.global-time-stat').text(maxTotalTime + ' minutes (' + maxTotalTimeOwner + ')')
   //
-  let filteredRuns = removeMineFromAll(data.runs)
+  const filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
   $('#display').append(showAllRunsHtml)
