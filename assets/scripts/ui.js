@@ -40,10 +40,6 @@ const initialize = function (route) {
     let markers = []
     let polylineRoute = []
     for (let i = 0; i < route.length; i++) {
-      // const place = {
-      //   lat: route[i][0],
-      //   lng: route[i][1]
-      // }
       const point = new google.maps.LatLng(route[i][0], route[i][1])
       polylineRoute.push(point)
       addPoint(point)
@@ -82,7 +78,7 @@ const saveRunFailure = (error) => {
 }
 
 const removeMineFromAll = (data) => {
-  let filteredData = []
+  const filteredData = []
   for (let i = 0; i < data.length; i++) {
     if (data[i]._owner !== store.user._id) {
       filteredData.push(data[i])
@@ -91,29 +87,11 @@ const removeMineFromAll = (data) => {
   return filteredData
 }
 
-const showAllRunsSuccess = (data) => {
-  console.log('within show all, data is :', data)
-  store.runs = data.runs
-  //
-  let globalFastestPace = data.runs[0].avgPace
-  let globalFastestPaceOwner = null
-  let globalLongestRun = 0
-  let globalLongestRunOwner = null
-  for (let i = 0; i < data.runs.length; i++) {
-    if (data.runs[i].avgPace < globalFastestPace) {
-      globalFastestPace = data.runs[i].avgPace
-      globalFastestPaceOwner = data.runs[i].ownerName
-    }
-    if (data.runs[i].timeTaken > globalLongestRun) {
-      globalLongestRun = data.runs[i].timeTaken
-      globalLongestRunOwner = data.runs[i].ownerName
-    }
-  }
+const getGlobalTotalTime = (data) => {
   const globalTotalTime = {}
   for (let i = 0; i < data.runs.length; i++) {
     if (globalTotalTime[data.runs[i].ownerName]) {
       globalTotalTime[data.runs[i].ownerName] += data.runs[i].timeTaken
-      console.log('within loop, data is: ', globalTotalTime[data.runs[i].ownerName] += data.runs[i].timeTaken)
     } else {
       globalTotalTime[data.runs[i].ownerName] = data.runs[i].timeTaken
     }
@@ -122,12 +100,56 @@ const showAllRunsSuccess = (data) => {
   const maxTotalTimeOwner = Object.keys(globalTotalTime).reduce(function (a, b) {
     return globalTotalTime[a] > globalTotalTime[b] ? a : b
   })
-  console.log('within showAllSuccess, obj is: ', globalTotalTime)
-  console.log('within showAllSuccess, largest val is: ', maxTotalTime)
-  $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
-  $('.global-longest-stat').text(globalLongestRun + ' minutes (' + globalLongestRunOwner + ')')
   $('.global-time-stat').text(maxTotalTime + ' minutes (' + maxTotalTimeOwner + ')')
-  //
+}
+
+const getGlobalTotalDistance = (data) => {
+  const globalTotalDistance = {}
+  for (let i = 0; i < data.runs.length; i++) {
+    if (globalTotalDistance[data.runs[i].ownerName]) {
+      globalTotalDistance[data.runs[i].ownerName] += data.runs[i].distance
+    } else {
+      globalTotalDistance[data.runs[i].ownerName] = data.runs[i].distance
+    }
+  }
+  const maxTotalDistance = Object.values(globalTotalDistance).sort((prev, next) => next - prev)[0]
+  const maxTotalDistanceOwner = Object.keys(globalTotalDistance).reduce(function (a, b) {
+    return globalTotalDistance[a] > globalTotalDistance[b] ? a : b
+  })
+  $('.global-distance-stat').text(maxTotalDistance + ' miles (' + maxTotalDistanceOwner + ')')
+}
+
+const getGlobalLongestRun = (data) => {
+  let globalLongestRun = 0
+  let globalLongestRunOwner = null
+  for (let i = 0; i < data.runs.length; i++) {
+    if (data.runs[i].timeTaken > globalLongestRun) {
+      globalLongestRun = data.runs[i].timeTaken
+      globalLongestRunOwner = data.runs[i].ownerName
+    }
+  }
+  $('.global-longest-stat').text(globalLongestRun + ' minutes (' + globalLongestRunOwner + ')')
+}
+
+const getGlobalFastestPace = (data) => {
+  let globalFastestPace = data.runs[0].avgPace
+  let globalFastestPaceOwner = null
+  for (let i = 0; i < data.runs.length; i++) {
+    if (data.runs[i].avgPace < globalFastestPace) {
+      globalFastestPace = data.runs[i].avgPace
+      globalFastestPaceOwner = data.runs[i].ownerName
+    }
+  }
+  $('.global-pace-stat').text(globalFastestPace + ' min/mile (' + globalFastestPaceOwner + ')')
+}
+
+const showAllRunsSuccess = (data) => {
+  console.log('within show all, data is :', data)
+  store.runs = data.runs
+  getGlobalTotalTime(data)
+  getGlobalLongestRun(data)
+  getGlobalFastestPace(data)
+  getGlobalTotalDistance(data)
   const filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
@@ -169,7 +191,7 @@ const showAllMyRunsSuccess = (data) => {
   $('.time-stat').text(totalTime + ' minutes')
   $('.pace-stat').text(fastestPace + ' min/mile')
   $('.longest-stat').text(longestRun + ' minutes')
-  $('.stats-modal-title').text(store.user.fullName + '\'s stats')
+  $('.stats-modal-title').text(store.user.fullName + '\'s Stats & Overall Leaderboard')
 }
 
 const showAllMyRunsFailure = (error) => {
@@ -208,5 +230,6 @@ module.exports = {
   deleteRunSuccess,
   deleteRunFailure,
   likeRunSuccess,
-  likeRunFailure
+  likeRunFailure,
+  getGlobalTotalTime
 }
