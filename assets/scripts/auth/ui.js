@@ -56,6 +56,7 @@ const signOutSuccess = () => {
   $('#message-board').hide()
   $('.jumbotron').show()
   $('.navbar').hide()
+  $('#stats-body').hide()
 }
 
 const signOutFailure = () => {

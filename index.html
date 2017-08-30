@@ -31,7 +31,7 @@
             <button type="button" class="btn btn-default" id="show-all-button">FRIENDS</button>
             <button type="button" class="btn btn-default" id="show-my-button">ME</button>
             <button type="button" class="btn btn-default" id="save-run-button">MAP ROUTE</button>
-            <button type="button" class="btn btn-default" id="stats-button" data-toggle="modal" data-target="#stats-modal">STATS</button>
+            <button type="button" class="btn btn-default" id="stats-button">STATS</button>
             <button type="button" class="btn btn-default" id="settings-button" data-toggle="modal" data-target="#settings-modal">SETTINGS</button>
             <button type="button" class="btn btn-default" id="sign-out-button">LOG OUT</button>
           </div>
@@ -49,7 +49,9 @@
     </div>
     </p>
   </div>
+  <!-- MESSAGE BOARD -->
   <div class="text-center" id="message-board"></div>
+  <!-- LOADER SCREEN -->
   <div class="sk-cube-grid">
     <div class="sk-cube sk-cube1"></div>
     <div class="sk-cube sk-cube2"></div>
@@ -61,6 +63,45 @@
     <div class="sk-cube sk-cube8"></div>
     <div class="sk-cube sk-cube9"></div>
   </div>
+  <!-- STATS TABLE -->
+  <div class="modal-body" id="stats-body">
+    <h3 class="stats-modal-header"></h3>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
+        <th><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></th>
+        <th><i class="fa fa-hourglass-end fa-2x" aria-hidden="true"></i></th>
+        <th><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></th>
+      </tr>
+      <tr>
+        <td><strong>Personal Bests</strong></td>
+        <td class="miles-stat"></td>
+        <td class="time-stat"></td>
+        <td class="longest-stat"></td>
+        <td class="pace-stat"></td>
+      </tr>
+      <tr>
+        <td><strong>Global Leaders</strong></td>
+        <td class="global-distance-stat"></td>
+        <td class="global-time-stat"></td>
+        <td class="global-longest-stat"></td>
+        <td class="global-pace-stat"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <h6>TOTAL DISTANCE (MI)</h6></td>
+        <td>
+          <h6>TOTAL MINUTES</h6></td>
+        <td>
+          <h6>LONGEST RUN</h6></td>
+        <td>
+          <h6>FASTEST PACE</h6></td>
+      </tr>
+    </table>
+  </div>
+  <!-- DISPLAY - FOR PLACING ALL HANDLEBARS CONTENT -->
   <div id="display"></div>
   <!-- ALLLL MODALS NOW -->
   <!-- SETTINGS MODAL -->
@@ -103,56 +144,6 @@
   <span aria-hidden="true">&times;</span>
 </button>
           <div id="map2"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- STATS MODAL -->
-  <div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="stats-modal-title" id="exampleModalLabel"></h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-        </div>
-        <div class="modal-body">
-          <h3 class="stats-modal-header"></h3>
-          <table class="table">
-            <tr>
-              <th></th>
-              <th><i class="fa fa-road fa-2x" aria-hidden="true"></i></th>
-              <th><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></th>
-              <th><i class="fa fa-hourglass-end fa-2x" aria-hidden="true"></i></th>
-              <th><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></th>
-            </tr>
-            <tr>
-              <td><strong>Personal Bests</strong></td>
-              <td class="miles-stat"></td>
-              <td class="time-stat"></td>
-              <td class="longest-stat"></td>
-              <td class="pace-stat"></td>
-            </tr>
-            <tr>
-              <td><strong>Global Leaders</strong></td>
-              <td class="global-distance-stat"></td>
-              <td class="global-time-stat"></td>
-              <td class="global-longest-stat"></td>
-              <td class="global-pace-stat"></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <h6>TOTAL DISTANCE (MI)</h6></td>
-              <td>
-                <h6>TOTAL MINUTES</h6></td>
-              <td>
-                <h6>LONGEST RUN</h6></td>
-              <td>
-                <h6>FASTEST PACE</h6></td>
-            </tr>
-          </table>
         </div>
       </div>
     </div>

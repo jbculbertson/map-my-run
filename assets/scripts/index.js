@@ -15,6 +15,7 @@ $(() => {
   $('#display').on('submit', '#save-run', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
   $('#show-my-button').on('click', mapEvents.onShowAllMyRuns)
+  $('#stats-button').on('click', mapEvents.onShowStats)
   $('#display').on('click', '#delete-run', mapEvents.onDeleteRun)
   $('#display').on('click', '#show-one-run', mapEvents.onShowOneRun)
   $('#display').on('click', '#like-run', mapEvents.onLikeRun)

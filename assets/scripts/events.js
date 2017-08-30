@@ -32,6 +32,12 @@ const getCurrentLocation = function () {
   })
 }
 
+const onShowStats = function () {
+  $('#display').empty()
+  console.log('fires within showStats')
+  $('#stats-body').show()
+}
+
 const initialize = function (pos) {
   console.log('fires within initialize')
   GoogleMapsLoader.load(function (google) {
@@ -183,6 +189,7 @@ const onShowAllRuns = function (event) {
   api.showAllRuns()
     .then(ui.showAllRunsSuccess)
     .then($('.map-view').hide())
+    .then($('#stats-body').hide())
     .catch(ui.showAllRunsFailure)
 }
 
@@ -190,6 +197,7 @@ const onShowAllMyRuns = function (event) {
   api.showAllMyRuns()
     .then(ui.showAllMyRunsSuccess)
     .then($('.map-view').hide())
+    .then($('#stats-body').hide())
     .catch(ui.showAllMyRunsFailure)
 }
 
@@ -219,5 +227,6 @@ module.exports = {
   onShowOneRun,
   onDeleteRun,
   onLikeRun,
-  onLikeFriendsRun
+  onLikeFriendsRun,
+  onShowStats
 }

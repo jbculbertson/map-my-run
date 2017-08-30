@@ -82,6 +82,11 @@ input {
   width: 75%;
 }
 
+#stats-body {
+  background-color: $opaque-white;
+  display: none;
+}
+
 table,
 th,
 td {
