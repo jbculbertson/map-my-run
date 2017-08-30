@@ -196,8 +196,7 @@ const showAllMyRunsSuccess = (data) => {
   store.runs = data.runs
   $('#display').empty()
   if (data.runs.length === 0) {
-    $('#message-board').text('You have no saved routes.  Click \'MAP ROUTE\' to save your first route.')
-    $('.stats-modal-header').text('You have no stats.  Click \'MAP ROUTE\' to save your first route.')
+    $('#message-board').text('You have no saved routes.  Save a route to start sharing runs with your friends.')
   } else {
     $('#message-board').text('')
     $('.stats-modal-header').text('')
