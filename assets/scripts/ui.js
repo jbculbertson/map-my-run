@@ -101,7 +101,18 @@ const getGlobalTotalTime = (data) => {
     return globalTotalTime[a] > globalTotalTime[b] ? a : b
   })
   $('.global-time-stat').text(maxTotalTime + ' minutes')
-  $('.global-timeOwner-stat').text(maxTotalTimeOwner)
+
+  if (maxTotalTimeOwner === store.user.fullName) {
+    $('.global-timeOwner-stat').text(maxTotalTimeOwner)
+    $('.global-timeOwner-stat').css('font-weight', 'bold')
+    $('.global-timeOwner-stat').css('line-height', '2.25')
+    $('.global-timeOwner-stat').css('color', 'red')
+    $('.global-timeOwner-stat').css('transform', 'scale(1.5)')
+    $('.global-timeOwner-stat').css('transition-delay', '1s')
+    $('.time').css('display', 'inline')
+  } else {
+    $('.global-timeOwner-stat').text(maxTotalTimeOwner)
+  }
 }
 
 const getGlobalTotalDistance = (data) => {
@@ -118,7 +129,17 @@ const getGlobalTotalDistance = (data) => {
     return globalTotalDistance[a] > globalTotalDistance[b] ? a : b
   })
   $('.global-distance-stat').text(maxTotalDistance + ' miles')
-  $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
+  if (maxTotalDistanceOwner === store.user.fullName) {
+    $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
+    $('.global-distanceOwner-stat').css('font-weight', 'bold')
+    $('.global-distanceOwner-stat').css('line-height', '2.25')
+    $('.global-distanceOwner-stat').css('color', 'red')
+    $('.global-distanceOwner-stat').css('transform', 'scale(1.5)')
+    $('.global-distanceOwner-stat').css('transition-delay', '1s')
+    $('.distance').css('display', 'inline')
+  } else {
+    $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
+  }
 }
 
 const getGlobalLongestRun = (data) => {
@@ -131,7 +152,17 @@ const getGlobalLongestRun = (data) => {
     }
   }
   $('.global-longest-stat').text(globalLongestRun + ' minutes')
-  $('.global-longestOwner-stat').text(globalLongestRunOwner)
+  if (globalLongestRunOwner === store.user.fullName) {
+    $('.global-longestOwner-stat').text(globalLongestRunOwner)
+    $('.global-longestOwner-stat').css('font-weight', 'bold')
+    $('.global-longestOwner-stat').css('line-height', '2.25')
+    $('.global-longestOwner-stat').css('color', 'red')
+    $('.global-longestOwner-stat').css('transform', 'scale(1.5)')
+    $('.global-longestOwner-stat').css('transition-delay', '1s')
+    $('.longest').css('display', 'inline')
+  } else {
+    $('.global-longestOwner-stat').text(globalLongestRunOwner)
+  }
 }
 
 const getGlobalFastestPace = (data) => {
@@ -151,7 +182,7 @@ const getGlobalFastestPace = (data) => {
     $('.global-paceOwner-stat').css('color', 'red')
     $('.global-paceOwner-stat').css('transform', 'scale(1.5)')
     $('.global-paceOwner-stat').css('transition-delay', '1s')
-    $('.hide-stat-icon').show()
+    $('.pace').css('display', 'inline')
   } else {
     $('.global-paceOwner-stat').text(globalFastestPaceOwner)
   }

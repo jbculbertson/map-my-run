@@ -43,12 +43,17 @@ const getCurrentLocation = function () {
 const onShowStats = function () {
   console.log('fires within showStats')
   api.indexForStats()
+    .then($('.hide-stat-icon').css('display', 'none'))
+    .then($('.revert').css('font-weight', 'normal'))
+    .then($('.revert').css('line-height', 'normal'))
+    .then($('.revert').css('color', 'black'))
+    .then($('.revert').css('transform', 'scale(1)'))
     .then(ui.indexForStatsSuccess)
     .then(() => api.showMineForStats())
     .then(ui.showMineForStatsSuccess)
     .then($('#display').empty())
     .then($('#stats-body').show())
-    .catch(ui.indesForStatsFailure)
+    .catch(ui.indexForStatsFailure)
 }
 
 const initialize = function (pos) {
