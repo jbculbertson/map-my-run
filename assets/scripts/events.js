@@ -16,28 +16,28 @@ let mileLength = 0
 let markers = []
 let route = []
 
-const getCurrentLocation = function () {
-  $('#display').empty()
-  console.log('fires within getCurrentLocation')
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
-      const showMapHtml = showMapTemplate()
-      $('#display').append(showMapHtml)
-      initialize(pos)
-      console.log('within getCurrentLocation, pos is ', pos)
-    }, function () {
-      $('#message-board').text('This browser does not support Geolocation')
-      initialize({ lat: 42.3601, lng: -71.0589 })
-    })
-  } else {
-    $('#message-board').text('This browser does not support Geolocation')
-    initialize({ lat: 42.3601, lng: -71.0589 })
-  }
-}
+// const getCurrentLocation = function () {
+//   $('#display').empty()
+//   console.log('fires within getCurrentLocation')
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function (position) {
+//       const pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude
+//       }
+//       const showMapHtml = showMapTemplate()
+//       $('#display').append(showMapHtml)
+//       initialize(pos)
+//       console.log('within getCurrentLocation, pos is ', pos)
+//     }, function () {
+//       $('#message-board').text('This browser does not support Geolocation')
+//       initialize({ lat: 42.3601, lng: -71.0589 })
+//     })
+//   } else {
+//     $('#message-board').text('This browser does not support Geolocation')
+//     initialize({ lat: 42.3601, lng: -71.0589 })
+//   }
+// }
 
 const onShowStats = function () {
   console.log('fires within showStats')
@@ -268,7 +268,7 @@ const initialize = function (pos) {
 }
 
 module.exports = {
-  getCurrentLocation,
+  // getCurrentLocation,
   initialize,
   onSaveRun,
   onShowAllRuns,

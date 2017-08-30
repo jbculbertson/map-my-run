@@ -128,7 +128,7 @@ const getGlobalTotalDistance = (data) => {
   const maxTotalDistanceOwner = Object.keys(globalTotalDistance).reduce(function (a, b) {
     return globalTotalDistance[a] > globalTotalDistance[b] ? a : b
   })
-  $('.global-distance-stat').text(maxTotalDistance + ' miles')
+  $('.global-distance-stat').text((maxTotalDistance).toFixed(2) + ' miles')
   if (maxTotalDistanceOwner === store.user.fullName) {
     $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
     $('.global-distanceOwner-stat').css('font-weight', 'bold')
