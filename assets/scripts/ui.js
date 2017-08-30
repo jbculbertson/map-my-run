@@ -145,11 +145,6 @@ const getGlobalFastestPace = (data) => {
 
 const showAllRunsSuccess = (data) => {
   console.log('within show all, data is :', data)
-  store.runs = data.runs
-  getGlobalTotalTime(data)
-  getGlobalLongestRun(data)
-  getGlobalFastestPace(data)
-  getGlobalTotalDistance(data)
   const filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
@@ -209,11 +204,6 @@ const showAllMyRunsSuccess = (data) => {
   }
   const showMyRunsHtml = showMyRunsTemplate({ runs: data.runs })
   $('#display').append(showMyRunsHtml)
-  getMyTotalMiles(data)
-  getMyTotalTime(data)
-  getMyLongestRun(data)
-  getMyFastestPace(data)
-  $('.stats-modal-title').text(store.user.fullName + '\'s Stats & Overall Leaderboard')
 }
 
 const showAllMyRunsFailure = (error) => {
@@ -240,6 +230,28 @@ const likeRunFailure = (error) => {
   console.error('within likeRunFailure, error is ' + error.responseText)
 }
 
+const indexForStatsSuccess = (data) => {
+  console.log('within indexForStatsSuccess, data is: ', data)
+  store.runs = data.runs
+  getGlobalTotalTime(data)
+  getGlobalLongestRun(data)
+  getGlobalFastestPace(data)
+  getGlobalTotalDistance(data)
+}
+
+const showMineForStatsSuccess = (data) => {
+  console.log('within showMineForStatsSuccess, data is: ', data)
+  store.runs = data.runs
+  getMyTotalMiles(data)
+  getMyTotalTime(data)
+  getMyLongestRun(data)
+  getMyFastestPace(data)
+}
+
+const indesForStatsFailure = (error) => {
+  console.error('within likeRunFailure, error is ' + error.responseText)
+}
+
 module.exports = {
   saveRunSuccess,
   saveRunFailure,
@@ -253,5 +265,8 @@ module.exports = {
   deleteRunFailure,
   likeRunSuccess,
   likeRunFailure,
-  getGlobalTotalTime
+  getGlobalTotalTime,
+  indexForStatsSuccess,
+  indesForStatsFailure,
+  showMineForStatsSuccess
 }

@@ -33,9 +33,14 @@ const getCurrentLocation = function () {
 }
 
 const onShowStats = function () {
-  $('#display').empty()
   console.log('fires within showStats')
-  $('#stats-body').show()
+  api.indexForStats()
+    .then(ui.indexForStatsSuccess)
+    .then(() => api.showMineForStats())
+    .then(ui.showMineForStatsSuccess)
+    .then($('#display').empty())
+    .then($('#stats-body').show())
+    .catch(ui.indesForStatsFailure)
 }
 
 const initialize = function (pos) {
@@ -107,7 +112,6 @@ const initialize = function (pos) {
       })
       length = google.maps.geometry.spherical.computeLength(polyline.getPath())
       mileLength = (length * 0.000621371).toFixed(2)
-      // $('.save-run-modal-header').text('This run is ' + mileLength + ' miles long.')
       $('#distance-input').val(mileLength)
       $('#distance-input').css('background', 'linear-gradient(to right, #dce35b, #45b649)')
       setTimeout(function () {

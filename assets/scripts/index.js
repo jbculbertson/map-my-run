@@ -9,6 +9,7 @@ $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
   $('#save-run-button').on('click', function () {
+    $('#stats-body').hide()
     mapEvents.getCurrentLocation()
     $('.sk-cube-grid').show('').delay(3000).fadeOut()
   })

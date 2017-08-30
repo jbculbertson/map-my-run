@@ -69,11 +69,35 @@ const deleteRun = function (data) {
   })
 }
 
+// for stats only
+const indexForStats = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/runs',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showMineForStats = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/userruns/' + store.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   saveRun,
   showAllRuns,
   showAllMyRuns,
   showOneRun,
   deleteRun,
-  likeRun
+  likeRun,
+  indexForStats,
+  showMineForStats
 }
