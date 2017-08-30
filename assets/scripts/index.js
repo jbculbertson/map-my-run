@@ -8,15 +8,28 @@ const authEvents = require('./auth/events')
 $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
+  // Chunk to execute when someone clicks Map Route
   $('#save-run-button').on('click', function () {
     $('#stats-body').hide()
-    mapEvents.getCurrentLocation()
+    mapEvents.initialize({ lat: 42.3601, lng: -71.0589 })
     $('#loader-modal-title').text('Map is loading.')
     $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
+    $('.loader').show('').delay(1250).fadeOut()
+    $('.sk-cube-grid').show('').delay(1250).fadeOut()
+    setTimeout(function () {
+      $('#loader-modal').modal('hide')
+    }, 1250)
+  })
+  // Attempting to create find-me button within map handlerbars
+  $('#display').on('click', '#find-button', function () {
+    mapEvents.getCurrentLocation()
+    $('#find-me-modal-title').text('Map is loading.')
+    $('#find-me-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
+    $('#find-me-modal-subtitle2').text('This will not work if your browser does not allow geolocation.')
     $('.loader').show('').delay(3000).fadeOut()
     $('.sk-cube-grid').show('').delay(3000).fadeOut()
     setTimeout(function () {
-      $('#loader-modal').modal('hide')
+      $('#find-me-modal').modal('hide')
     }, 3000)
   })
   $('#display').on('submit', '#save-run', mapEvents.onSaveRun)

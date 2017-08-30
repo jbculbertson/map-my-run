@@ -58,6 +58,9 @@ const onShowStats = function () {
 
 const initialize = function (pos) {
   console.log('fires within initialize')
+  $('#display').empty()
+  const showMapHtml = showMapTemplate()
+  $('#display').append(showMapHtml)
   GoogleMapsLoader.load(function (google) {
 // this section clears the map on load - needed due to a bug that happened when
 // you had a map with markers, and then clicked to a new tab.  When you re-init the
@@ -70,13 +73,13 @@ const initialize = function (pos) {
       map: map
     })
     console.log('fires within GoogleMapsLoader')
-    const loc = {
-      lat: pos.lat,
-      lng: pos.lng
-    }
+    // const loc = {
+    //   lat: pos.lat,
+    //   lng: pos.lng
+    // }
     const mapOptions = {
       zoom: 15,
-      center: loc,
+      center: pos,
       mapTypeId: 'terrain',
       gestureHandling: 'cooperative'
     }
