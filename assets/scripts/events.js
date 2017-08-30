@@ -9,7 +9,6 @@ const GoogleMapsLoader = require('google-maps')
 
 GoogleMapsLoader.KEY = 'AIzaSyCFiPNmm6GA0YPgYC6x-pAJ5Xkj3oCSITw'
 GoogleMapsLoader.LIBRARIES = ['geometry', 'places']
-const showMapTemplate = require('./templates/map.handlebars')
 
 let polyline
 let length = 0
@@ -53,14 +52,92 @@ const onShowStats = function () {
     .then(ui.showMineForStatsSuccess)
     .then($('#display').empty())
     .then($('#stats-body').show())
+    .then($('.map-view').hide())
+    .then($('#pac-input').hide())
     .catch(ui.indexForStatsFailure)
+}
+
+const onSaveRun = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(this)
+  const data = {
+    'run': {
+      'distance': mileLength,
+      'timeTaken': formData.run.timeTaken,
+      'route': route
+    }
+  }
+  console.log('within save run, data = ' + data)
+  api.saveRun(data)
+    .then(ui.saveRunSuccess)
+    .catch(ui.saveRunFailure)
+}
+
+const onLikeRun = function (event) {
+  const data = {
+    'like': {
+      '_owner': store.user.id,
+      '_run_id': this.dataset.id
+    }
+  }
+  api.likeRun(data)
+    .then(ui.likeRunSuccess)
+    .then(() => onShowAllMyRuns())
+    .catch(ui.likeRunFailure)
+}
+
+const onLikeFriendsRun = function (event) {
+  const data = {
+    'like': {
+      '_owner': store.user.id,
+      '_run_id': this.dataset.id
+    }
+  }
+  api.likeRun(data)
+    .then(ui.likeRunSuccess)
+    .then(() => onShowAllRuns())
+    .catch(ui.likeRunFailure)
+}
+
+const onShowAllRuns = function (event) {
+  api.showAllRuns()
+    .then(ui.showAllRunsSuccess)
+    .then($('.map-view').hide())
+    .then($('#pac-input').hide())
+    .then($('#stats-body').hide())
+    .catch(ui.showAllRunsFailure)
+}
+
+const onShowAllMyRuns = function (event) {
+  api.showAllMyRuns()
+    .then(ui.showAllMyRunsSuccess)
+    .then($('.map-view').hide())
+    .then($('#pac-input').hide())
+    .then($('#stats-body').hide())
+    .catch(ui.showAllMyRunsFailure)
+}
+
+const onShowOneRun = function (event) {
+  const data = this.dataset.id
+  api.showOneRun(data)
+    .then(ui.showOneRunSuccess)
+    .catch(ui.showOneRunFailure)
+}
+
+const onDeleteRun = function (event) {
+  api.deleteRun(this.dataset.id)
+    .then(ui.deleteRunSuccess)
+    .then(() => {
+      $('#display').empty()
+      onShowAllMyRuns()
+    })
+    .catch(ui.deleteRunFailure)
 }
 
 const initialize = function (pos) {
   console.log('fires within initialize')
   $('#display').empty()
-  const showMapHtml = showMapTemplate()
-  $('#display').append(showMapHtml)
+  $('.map-view').show()
   GoogleMapsLoader.load(function (google) {
 // this section clears the map on load - needed due to a bug that happened when
 // you had a map with markers, and then clicked to a new tab.  When you re-init the
@@ -72,17 +149,14 @@ const initialize = function (pos) {
       strokeWeight: 3,
       map: map
     })
-    console.log('fires within GoogleMapsLoader')
-    // const loc = {
-    //   lat: pos.lat,
-    //   lng: pos.lng
-    // }
+    console.log('fires within GoogleMapsLoader1')
     const mapOptions = {
       zoom: 15,
       center: pos,
       mapTypeId: 'terrain',
       gestureHandling: 'cooperative'
     }
+    console.log('fires within GoogleMapsLoader1')
     const map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
     polyline = new google.maps.Polyline({
@@ -90,6 +164,36 @@ const initialize = function (pos) {
       strokeWeight: 3,
       map: map
     })
+    //
+    //
+    console.log('fires within GoogleMapsLoader3')
+    const input = document.getElementById('pac-input')
+    console.log('fires within GoogleMapsLoader4')
+    const searchBox = new google.maps.places.SearchBox(input)
+    console.log('fires within GoogleMapsLoader5')
+    console.log('fires after GoogleMapsLoader5, map is :', map)
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
+    console.log('fires within GoogleMapsLoader6')
+    map.addListener('bounds_changed', function () {
+      searchBox.setBounds(map.getBounds())
+    })
+    searchBox.addListener('places_changed', function () {
+      const places = searchBox.getPlaces()
+      if (places.length === 0) {
+        return
+      }
+      const bounds = new google.maps.LatLngBounds()
+      places.forEach(function (place) {
+        if (place.geometry.viewport) {
+          bounds.union(place.geometry.viewport)
+        } else {
+          bounds.extend(place.geometry.location)
+        }
+      })
+      map.fitBounds(bounds)
+    })
+//
+//
     google.maps.event.addListener(map, 'click', function (event) {
       addPoint(event.latLng)
     })
@@ -161,81 +265,6 @@ const initialize = function (pos) {
       })
     })
   })
-}
-
-const onSaveRun = function (event) {
-  const formData = getFormFields(this)
-  const data = {
-    'run': {
-      'distance': mileLength,
-      'timeTaken': formData.run.timeTaken,
-      'route': route
-    }
-  }
-  console.log('within save run, data = ' + data)
-  event.preventDefault()
-  api.saveRun(data)
-    .then(ui.saveRunSuccess)
-    .catch(ui.saveRunFailure)
-}
-
-const onLikeRun = function (event) {
-  const data = {
-    'like': {
-      '_owner': store.user.id,
-      '_run_id': this.dataset.id
-    }
-  }
-  api.likeRun(data)
-    .then(ui.likeRunSuccess)
-    .then(() => onShowAllMyRuns())
-    .catch(ui.likeRunFailure)
-}
-
-const onLikeFriendsRun = function (event) {
-  const data = {
-    'like': {
-      '_owner': store.user.id,
-      '_run_id': this.dataset.id
-    }
-  }
-  api.likeRun(data)
-    .then(ui.likeRunSuccess)
-    .then(() => onShowAllRuns())
-    .catch(ui.likeRunFailure)
-}
-
-const onShowAllRuns = function (event) {
-  api.showAllRuns()
-    .then(ui.showAllRunsSuccess)
-    .then($('.map-view').hide())
-    .then($('#stats-body').hide())
-    .catch(ui.showAllRunsFailure)
-}
-
-const onShowAllMyRuns = function (event) {
-  api.showAllMyRuns()
-    .then(ui.showAllMyRunsSuccess)
-    .then($('.map-view').hide())
-    .then($('#stats-body').hide())
-    .catch(ui.showAllMyRunsFailure)
-}
-
-const onShowOneRun = function (event) {
-  const data = this.dataset.id
-  api.showOneRun(data)
-    .then(ui.showOneRunSuccess)
-    .catch(ui.showOneRunFailure)
-}
-
-const onDeleteRun = function (event) {
-  api.deleteRun(this.dataset.id)
-    .then(ui.deleteRunSuccess)
-    .then(() => {
-      $('#display').empty()
-      onShowAllMyRuns()
-    })
-    .catch(ui.deleteRunFailure)
 }
 
 module.exports = {

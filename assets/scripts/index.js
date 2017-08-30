@@ -9,30 +9,33 @@ $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
   // Chunk to execute when someone clicks Map Route
+  let counter = 0
   $('#save-run-button').on('click', function () {
-    $('#stats-body').hide()
-    mapEvents.initialize({ lat: 42.3601, lng: -71.0589 })
-    $('#loader-modal-title').text('Map is loading.')
-    $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
-    $('.loader').show('').delay(1250).fadeOut()
-    $('.sk-cube-grid').show('').delay(1250).fadeOut()
-    setTimeout(function () {
-      $('#loader-modal').modal('hide')
-    }, 1250)
+    counter += 1
+    console.log(counter)
+    if (counter === 1) {
+      $('#stats-body').hide()
+      $('#loader-modal-title').text('Map is loading.')
+      $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
+      $('.loader').show('').delay(1250).fadeOut()
+      $('.sk-cube-grid').show('').delay(1250).fadeOut()
+      setTimeout(function () {
+        $('#loader-modal').modal('hide')
+      }, 1250)
+      mapEvents.initialize({ lat: 42.3601, lng: -71.0589 })
+      $('#pac-input').show()
+    } else {
+      $('.save-run-modal-header').text('')
+      $('#display').empty()
+      $('#pac-input').show()
+      $('.map-view').show()
+      $('#stats-body').hide()
+      setTimeout(function () {
+        $('#loader-modal').modal('hide')
+      }, 20)
+    }
   })
-  // Attempting to create find-me button within map handlerbars
-  $('#display').on('click', '#find-button', function () {
-    mapEvents.getCurrentLocation()
-    $('#find-me-modal-title').text('Map is loading.')
-    $('#find-me-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
-    $('#find-me-modal-subtitle2').text('This will not work if your browser does not allow geolocation.')
-    $('.loader').show('').delay(3000).fadeOut()
-    $('.sk-cube-grid').show('').delay(3000).fadeOut()
-    setTimeout(function () {
-      $('#find-me-modal').modal('hide')
-    }, 3000)
-  })
-  $('#display').on('submit', '#save-run', mapEvents.onSaveRun)
+  $('#save-run').on('submit', mapEvents.onSaveRun)
   $('#show-all-button').on('click', mapEvents.onShowAllRuns)
   $('#show-my-button').on('click', mapEvents.onShowAllMyRuns)
   $('#stats-button').on('click', mapEvents.onShowStats)

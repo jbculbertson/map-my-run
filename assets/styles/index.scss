@@ -27,10 +27,6 @@ p, h4 {
   width: 100%;
 }
 
-#find-me-modal-subtitle2 {
-  color: $red
-}
-
 .hide-stat-icon {
   display: none;
 }
@@ -79,10 +75,18 @@ input {
   width: 100%;
 }
 
+.map-view {
+  display: none;
+}
+
 .navbar {
   background-image: url('https://i.imgur.com/yGhNllG.jpg');
   display: none;
   margin-bottom: 0;
+}
+
+#pac-input {
+  display: none;
 }
 
 .panel {

@@ -59,6 +59,8 @@ const signOutSuccess = () => {
   $('.jumbotron').show()
   $('.navbar').hide()
   $('#stats-body').hide()
+  $('#pac-input').hide()
+  $('.map-view').hide()
 }
 
 const signOutFailure = () => {
