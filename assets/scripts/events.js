@@ -268,7 +268,6 @@ const initialize = function (pos) {
 }
 
 module.exports = {
-  // getCurrentLocation,
   initialize,
   onSaveRun,
   onShowAllRuns,
