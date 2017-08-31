@@ -1,5 +1,13 @@
 {{#each runs as |run|}}
 <div class="panel panel-default">
+<div class="overlay">
+  <h4>People Who Liked Your Run</h4>
+  <h5>Click to make this go away</h5>
+  <h6>Scroll if you are really popular</h6>
+  {{#each likes as |like|}}
+  <div class="like-hide">{{like._ownerFullName}}</div>
+  {{/each}}
+</div>
   <div class="panel-heading">
     <div class="col-sm-2">
       <i class="fa fa-user-circle-o fa-4x" id="user-icon" aria-hidden="true"></i>
@@ -22,9 +30,6 @@
         <i class="fa fa-trash-o"></i> Delete</button>
       <button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
         <i class="fa fa-heart"></i>  {{run.likes.length}}</button>
-        {{#each likes as |like|}}
-        <p class="like-hide" id="{{run.id}}">{{like._ownerFullName}}</p>
-        {{/each}}
     </div>
   </div>
   <div class="panel-body">

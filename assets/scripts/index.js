@@ -17,11 +17,11 @@ $(() => {
       $('#stats-body').hide()
       $('#loader-modal-title').text('Map is loading.')
       $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
-      $('.loader').show('').delay(1250).fadeOut()
-      $('.sk-cube-grid').show('').delay(1250).fadeOut()
+      $('.loader').show('').delay(2000).fadeOut()
+      $('.sk-cube-grid').show('').delay(2000).fadeOut()
       setTimeout(function () {
         $('#loader-modal').modal('hide')
-      }, 1250)
+      }, 2000)
       mapEvents.initialize({ lat: 42.3601, lng: -71.0589 })
       $('#pac-input').show()
     } else {
@@ -49,18 +49,20 @@ $(() => {
   $('.modal').on('shown.bs.modal', function () {
     $(this).find('input:first').focus()
   })
+  //
   $('#display').on('mouseenter', '#like-run', function () {
-    $(this).siblings('.like-hide').css('display', 'inline')
+    $(this).parents('.panel-default').children('.overlay').css('display', 'block')
   })
-  $('#display').on('mouseleave', '#like-run', function () {
-    $(this).siblings('.like-hide').css('display', 'none')
+  $('#display').on('click', '.overlay', function () {
+    $(this).css('display', 'none')
   })
   $('#display').on('mouseenter', '#like-friends-run', function () {
-    $(this).siblings('.like-hide').css('display', 'inline')
+    $(this).parents('.panel-default').children('.overlay').css('display', 'block')
   })
-  $('#display').on('mouseleave', '#like-friends-run', function () {
-    $(this).siblings('.like-hide').css('display', 'none')
+  $('#display').on('click', '.overlay', function () {
+    $(this).css('display', 'none')
   })
+  //
 })
 
 // use require without a reference to ensure a file is bundled
