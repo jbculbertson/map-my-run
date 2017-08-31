@@ -48,6 +48,11 @@ input {
   font-family: 'Rock Salt', cursive;
 }
 
+.like-hide {
+  display: none;
+  width: 100%
+}
+
 #map-key {
   background-color: $opaque-white;
 }

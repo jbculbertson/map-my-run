@@ -49,6 +49,18 @@ $(() => {
   $('.modal').on('shown.bs.modal', function () {
     $(this).find('input:first').focus()
   })
+  $('#display').on('mouseenter', '#like-run', function () {
+    $(this).siblings('.like-hide').css('display', 'inline')
+  })
+  $('#display').on('mouseleave', '#like-run', function () {
+    $(this).siblings('.like-hide').css('display', 'none')
+  })
+  $('#display').on('mouseenter', '#like-friends-run', function () {
+    $(this).siblings('.like-hide').css('display', 'inline')
+  })
+  $('#display').on('mouseleave', '#like-friends-run', function () {
+    $(this).siblings('.like-hide').css('display', 'none')
+  })
 })
 
 // use require without a reference to ensure a file is bundled
