@@ -17,9 +17,7 @@ const initialize = function (route) {
     lat: route[0][0],
     lng: route[0][1]
   }
-  console.log('fires within initialize2')
   GoogleMapsLoader.load(function (google) {
-    console.log('fires within GoogleMapsLoader2')
     const mapOptions = {
       zoom: 14,
       center: loc,
@@ -59,7 +57,6 @@ const initialize = function (route) {
 const showOneRunSuccess = (data) => {
   store.runs = data.runs
   const route = data.run.route
-  console.log('within showOneRunSuccess, data is ', data)
   initialize(route)
 }
 
@@ -68,13 +65,11 @@ const saveRunSuccess = (data) => {
   $('.save-run').val('')
   $('#message-board').text('')
   $('.stats-modal-header').text('')
-  console.log('within saveRunSuccess, data is ', data)
 }
 
-const saveRunFailure = (error) => {
+const saveRunFailure = () => {
   $('.save-run-modal-header').text('There was an error saving your route.')
   $('.save-run').val('')
-  console.error(error.responseText)
 }
 
 const removeMineFromAll = (data) => {
@@ -189,15 +184,13 @@ const getGlobalFastestPace = (data) => {
 }
 
 const showAllRunsSuccess = (data) => {
-  console.log('within show all, data is :', data)
   const filteredRuns = removeMineFromAll(data.runs)
   $('#display').empty()
   const showAllRunsHtml = showAllRunsTemplate({ runs: filteredRuns })
   $('#display').append(showAllRunsHtml)
 }
 
-const showAllRunsFailure = (error) => {
-  console.error(error.responseText)
+const showAllRunsFailure = () => {
 }
 
 const getMyTotalMiles = (data) => {
@@ -237,7 +230,6 @@ const getMyFastestPace = (data) => {
 }
 
 const showAllMyRunsSuccess = (data) => {
-  console.log('showAllMyRuns data is, ', data)
   store.runs = data.runs
   $('#display').empty()
   if (data.runs.length === 0) {
@@ -250,32 +242,7 @@ const showAllMyRunsSuccess = (data) => {
   $('#display').append(showMyRunsHtml)
 }
 
-const showAllMyRunsFailure = (error) => {
-  console.error(error.responseText)
-}
-
-const showOneRunFailure = (error) => {
-  console.error(error.responseText)
-}
-
-const deleteRunSuccess = (data) => {
-  console.log(data)
-}
-
-const deleteRunFailure = (error) => {
-  console.error('within deleteFail, error is ' + error.responseText)
-}
-
-const likeRunSuccess = (data) => {
-  console.log(data)
-}
-
-const likeRunFailure = (error) => {
-  console.error('within likeRunFailure, error is ' + error.responseText)
-}
-
 const indexForStatsSuccess = (data) => {
-  console.log('within indexForStatsSuccess, data is: ', data)
   store.runs = data.runs
   getGlobalTotalTime(data)
   getGlobalLongestRun(data)
@@ -284,16 +251,11 @@ const indexForStatsSuccess = (data) => {
 }
 
 const showMineForStatsSuccess = (data) => {
-  console.log('within showMineForStatsSuccess, data is: ', data)
   store.runs = data.runs
   getMyTotalMiles(data)
   getMyTotalTime(data)
   getMyLongestRun(data)
   getMyFastestPace(data)
-}
-
-const indexForStatsFailure = (error) => {
-  console.error('within indexForStatsFailure, error is ' + error.responseText)
 }
 
 module.exports = {
@@ -302,15 +264,8 @@ module.exports = {
   showAllRunsSuccess,
   showAllRunsFailure,
   showOneRunSuccess,
-  showOneRunFailure,
   showAllMyRunsSuccess,
-  showAllMyRunsFailure,
-  deleteRunSuccess,
-  deleteRunFailure,
-  likeRunSuccess,
-  likeRunFailure,
   getGlobalTotalTime,
   indexForStatsSuccess,
-  indexForStatsFailure,
   showMineForStatsSuccess
 }

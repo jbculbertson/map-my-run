@@ -16,31 +16,7 @@ let mileLength = 0
 let markers = []
 let route = []
 
-// const getCurrentLocation = function () {
-//   $('#display').empty()
-//   console.log('fires within getCurrentLocation')
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function (position) {
-//       const pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude
-//       }
-//       const showMapHtml = showMapTemplate()
-//       $('#display').append(showMapHtml)
-//       initialize(pos)
-//       console.log('within getCurrentLocation, pos is ', pos)
-//     }, function () {
-//       $('#message-board').text('This browser does not support Geolocation')
-//       initialize({ lat: 42.3601, lng: -71.0589 })
-//     })
-//   } else {
-//     $('#message-board').text('This browser does not support Geolocation')
-//     initialize({ lat: 42.3601, lng: -71.0589 })
-//   }
-// }
-
 const onShowStats = function () {
-  console.log('fires within showStats')
   api.indexForStats()
     .then($('.hide-stat-icon').css('display', 'none'))
     .then($('.revert').css('font-weight', 'normal'))
@@ -67,7 +43,6 @@ const onSaveRun = function (event) {
       'route': route
     }
   }
-  console.log('within save run, data = ' + data)
   api.saveRun(data)
     .then(ui.saveRunSuccess)
     .catch(ui.saveRunFailure)
@@ -135,7 +110,6 @@ const onDeleteRun = function (event) {
 }
 
 const initialize = function (pos) {
-  console.log('fires within initialize')
   $('#display').empty()
   $('.map-view').show()
   GoogleMapsLoader.load(function (google) {
@@ -149,14 +123,12 @@ const initialize = function (pos) {
       strokeWeight: 3,
       map: map
     })
-    console.log('fires within GoogleMapsLoader1')
     const mapOptions = {
       zoom: 15,
       center: pos,
       mapTypeId: 'terrain',
       gestureHandling: 'cooperative'
     }
-    console.log('fires within GoogleMapsLoader1')
     const map = new google.maps.Map(document.getElementById('map'),
     mapOptions)
     polyline = new google.maps.Polyline({
@@ -164,16 +136,9 @@ const initialize = function (pos) {
       strokeWeight: 3,
       map: map
     })
-    //
-    //
-    console.log('fires within GoogleMapsLoader3')
     const input = document.getElementById('pac-input')
-    console.log('fires within GoogleMapsLoader4')
     const searchBox = new google.maps.places.SearchBox(input)
-    console.log('fires within GoogleMapsLoader5')
-    console.log('fires after GoogleMapsLoader5, map is :', map)
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
-    console.log('fires within GoogleMapsLoader6')
     map.addListener('bounds_changed', function () {
       searchBox.setBounds(map.getBounds())
     })
@@ -198,7 +163,6 @@ const initialize = function (pos) {
       addPoint(event.latLng)
     })
     function removePoint (marker) {
-      console.log('fires within RemovePoint')
       for (let i = 0; i < markers.length; i++) {
         if (markers[i] === marker) {
           markers[i].setMap(null)
@@ -216,7 +180,6 @@ const initialize = function (pos) {
       }, 1000)
     }
     function addPoint (latlng) {
-      console.log('fires within AddPoint, latlng is ', latlng)
       const marker = new google.maps.Marker({
         position: latlng,
         animation: google.maps.Animation.DROP,
@@ -237,14 +200,11 @@ const initialize = function (pos) {
       setTimeout(function () {
         $('#distance-input').css('background', 'white')
       }, 1000)
-      console.log('Total miles is ' + mileLength)
     }
     // clearBoard 'function'
     $(document).ready(function () {
       $('#clear-button').on('click', function (event) {
-        console.log('fires within ClearRoute (which is not actually a function)')
         for (let i = 0; i < markers.length; i++) {
-          console.log('Markers within clearRoute forLoop ' + i + markers[i])
           markers[i].setMap(null)
         }
         polyline.setMap(null)
@@ -261,7 +221,6 @@ const initialize = function (pos) {
         setTimeout(function () {
           $('#distance-input').css('background', 'white')
         }, 1000)
-        console.log('Total miles is ' + mileLength)
       })
     })
   })

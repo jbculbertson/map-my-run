@@ -12,7 +12,6 @@ $(() => {
   let counter = 0
   $('#save-run-button').on('click', function () {
     counter += 1
-    console.log(counter)
     if (counter === 1) {
       $('#stats-body').hide()
       $('#loader-modal-title').text('Map is loading.')

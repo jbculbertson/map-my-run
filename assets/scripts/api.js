@@ -16,7 +16,6 @@ const saveRun = function (data) {
 }
 
 const likeRun = function (data) {
-  console.log('made it to Like API call, data is :', data)
   return $.ajax({
     url: config.apiOrigin + '/likes',
     method: 'POST',
