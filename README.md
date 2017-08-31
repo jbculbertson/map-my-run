@@ -4,18 +4,19 @@ Created by Jeff Culbertson
 ## App Features
 
 When you login, you'll be able to see a feed of your runs, or runs posted by
-your friends.
+your friends.  You can interact with your friends runs by 'liking' them, or viewing
+their run on a map.
 
-![Image](http://i.imgur.com/k0NXdTM.png)
+![Image](http://i.imgur.com/F0ENWQK.png)
 
-Click on Map Route to view an interactive map, centered around where you are
-currently.  You can click to add markers and create a route.
+Click on Map Route to view an interactive map, with the ability to tap into Google's
+powerful search bar.  You can also click to add markers and create a route.
 
-![Image](http://i.imgur.com/AsbFclU.png)
+![Image](http://i.imgur.com/yjF8i22.png)
 
-View real-time statistics at anypoint.
+View real-time statistics at anypoint, and see celebrations when you set the Global Record!
 
-![Image](http://i.imgur.com/Mkgbcl3.png)
+![Image](http://i.imgur.com/SUybmsB.png)
 
 ## Installation instructions for any dependencies
 * NPM install to install dependencies
@@ -86,7 +87,8 @@ on the small issue in front of me, which made them much easier to manage.
 * [Feed Card Wireframe](http://i.imgur.com/g4RYGAI.jpg)
 
 ## Entity Relationship Diagram
-  * To start, Runtracker has two entities - Users and Runs.  One User can have many runs.
+  * Runtracker has three entities - Users, Runs and Likes.  One User can have many runs,
+  and many Likes, and one Run can have many Likes
 
 ## Unsolved Problems
   * I'd like to add Google Maps 'Snap-to-Roads' feature so that routes are more closely
@@ -94,5 +96,5 @@ on the small issue in front of me, which made them much easier to manage.
   * I'd also like to tap into the Geolocation Watch feature, so that the Geolocation
   API will regularly ping the user to get their position.  This would allow the user
   to create a run by physically running it
-
-## Link to your pitch deck
+  * Currently, a user can like something over and over - I'd like to make it so that
+  one click creates a Like, and a second click removes that Like.
