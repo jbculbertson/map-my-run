@@ -61,6 +61,11 @@ $(() => {
   $('#display').on('click', '.overlay', function () {
     $(this).css('display', 'none')
   })
+  $(document).on('click', function (event) {
+    if (event.target.id !== '.overlay') {
+      $('.overlay').hide()
+    }
+  })
   //
 })
 

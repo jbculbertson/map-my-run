@@ -47,13 +47,17 @@ input {
   color: $white;
   font-family: 'Rock Salt', cursive;
 }
+.like-hide {
+  text-align: left;
+}
 
 .overlay {
   background-color: $grey;
   display: none;
   height: 100%;
-  position: absolute;
   overflow-y: auto;
+  position: absolute;
+  text-align: center;
   width: 50%;
   z-index: 1;
 }

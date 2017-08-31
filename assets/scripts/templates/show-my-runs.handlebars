@@ -4,9 +4,11 @@
   <h4>People Who Liked Your Run</h4>
   <h5>Click to make this go away</h5>
   <h6>Scroll if you are really popular</h6>
+  <ul>
   {{#each likes as |like|}}
-  <div class="like-hide">{{like._ownerFullName}}</div>
+  <li class="like-hide">{{like._ownerFullName}}</li>
   {{/each}}
+</ul>
 </div>
   <div class="panel-heading">
     <div class="col-sm-2">
