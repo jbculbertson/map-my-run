@@ -1,6 +1,7 @@
  # RunTracker
-:trophy: :running: :running: :trophy:
-![Image](http://i.imgur.com/4kIxBWW.png)
+
+![Image](http://i.imgur.com/4kIxBWW.png){ width = 33% }
+![Image](http://i.imgur.com/4kIxBWW.png){ width = 33% }
 ## Created by Jeff Culbertson
 
 ## App Features
