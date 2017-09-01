@@ -1,5 +1,6 @@
-:trophy: :running: # RunTracker :running: :trophy:
-Created by Jeff Culbertson
+ # RunTracker
+:trophy: :running: :running: :trophy:
+## Created by Jeff Culbertson
 
 ## App Features
 
