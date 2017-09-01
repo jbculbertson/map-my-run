@@ -1,5 +1,6 @@
  # RunTracker
 :trophy: :running: :running: :trophy:
+![Image](http://i.imgur.com/4kIxBWW.png)
 ## Created by Jeff Culbertson
 
 ## App Features
@@ -8,16 +9,16 @@ When you login, you'll be able to see a feed of your runs, or runs posted by
 your friends.  You can interact with your friends runs by 'liking' them, or viewing
 their run on a map.
 
-![Image](http://i.imgur.com/F0ENWQK.png)
+![Image](http://i.imgur.com/rJ7Csub.png)
 
 Click on Map Route to view an interactive map, with the ability to tap into Google's
 powerful search bar.  You can also click to add markers and create a route.
 
-![Image](http://i.imgur.com/yjF8i22.png)
+![Image](http://i.imgur.com/iZhZSlA.png)
 
 View real-time statistics at anypoint, and see celebrations when you set the Global Record!
 
-![Image](http://i.imgur.com/SUybmsB.png)
+![Image](http://i.imgur.com/BkqM6nH.png)
 
 ## Installation instructions for any dependencies
 * NPM install to install dependencies
