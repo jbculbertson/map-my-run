@@ -16,11 +16,11 @@ $(() => {
       $('#stats-body').hide()
       $('#loader-modal-title').text('Map is loading.')
       $('#loader-modal-subtitle').text('Please enjoy this optical illusion while you wait.')
-      $('.loader').show('').delay(2000).fadeOut()
-      $('.sk-cube-grid').show('').delay(2000).fadeOut()
+      $('.loader').show('').delay(3000).fadeOut()
+      $('.sk-cube-grid').show('').delay(3000).fadeOut()
       setTimeout(function () {
         $('#loader-modal').modal('hide')
-      }, 2000)
+      }, 3000)
       mapEvents.initialize({ lat: 42.3601, lng: -71.0589 })
       $('#pac-input').show()
     } else {
