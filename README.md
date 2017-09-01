@@ -1,7 +1,7 @@
  # RunTracker
 
-![Image](http://i.imgur.com/4kIxBWW.png){ width = 33% }
-![Image](http://i.imgur.com/4kIxBWW.png){ width = 33% }
+<img src="http://i.imgur.com/4kIxBWW.png" height="75" width="75">
+
 ## Created by Jeff Culbertson
 
 ## App Features
