@@ -2,8 +2,6 @@
 <div class="panel panel-default">
 <div class="overlay">
   <h4>People Who Liked Your Run</h4>
-  <h5>Click to make this go away</h5>
-  <h6>Scroll if you are really popular</h6>
   <ul>
   {{#each likes as |like|}}
   <li class="like-hide">{{like._ownerFullName}}</li>
@@ -31,7 +29,9 @@
       <button class="btn btn-danger btn-sm" id="delete-run" data-id="{{run._id}}">
         <i class="fa fa-trash-o"></i> Delete</button>
       <button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
-        <i class="fa fa-heart"></i>  {{run.likes.length}}</button>
+        <i class="fa fa-heart"></i></button>
+      <button class="btn btn-success btn-sm" id="like-counter" data-id="{{run._id}}"
+      data-toggle="modal" data-target="#like-modal">{{run.likes.length}}</button>
     </div>
   </div>
   <div class="panel-body">
@@ -53,5 +53,23 @@
    </tr>
   </table>
 </div>
+</div>
+
+<div class="modal fade" id="like-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Likes</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+      </div>
+      <div class="modal-body">
+        {{#each likes as |like|}}
+        <li class="like-hide">{{like._ownerFullName}}</li>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </div>
 {{/each}}

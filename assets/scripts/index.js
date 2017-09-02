@@ -49,17 +49,17 @@ $(() => {
     $(this).find('input:first').focus()
   })
   //
-  $('#display').on('mouseenter', '#like-run', function () {
+  $('#display').on('mouseenter', '#like-counter', function () {
     $(this).parents('.panel-default').children('.overlay').css('display', 'block')
   })
-  $('#display').on('click', '.overlay', function () {
-    $(this).css('display', 'none')
+  $('#display').on('mouseleave', '#like-counter', function () {
+    $(this).parents('.panel-default').children('.overlay').css('display', 'none')
   })
-  $('#display').on('mouseenter', '#like-friends-run', function () {
+  $('#display').on('mouseenter', '#friends-like-counter', function () {
     $(this).parents('.panel-default').children('.overlay').css('display', 'block')
   })
-  $('#display').on('click', '.overlay', function () {
-    $(this).css('display', 'none')
+  $('#display').on('mouseleave', '#friends-like-counter', function () {
+    $(this).parents('.panel-default').children('.overlay').css('display', 'none')
   })
   $(document).on('click', function (event) {
     if (event.target.id !== '.overlay') {
