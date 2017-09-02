@@ -146,20 +146,22 @@
       </tr>
     </th>
   </table>
+  <form>
       <div class="form group">
       <label class="col-sm-3">Distance</label>
       <div class="col-sm-9">
         <div class="nativeDatePicker">
-          <input class="save-run" type="text" id="distance-input" name="run[timeTaken]">
+          <input class="save-run" type="number" id="distance-input" name="run[distance]" readonly>
           <span class="validity"></span>
         </div>
       </div>
     </div>
+  </form>
     <form id="save-run">
       <div class="form group">
         <label class="col-sm-3">Duration</label>
         <div class="col-sm-9">
-          <input class="save-run" type="text" name="run[timeTaken]" value="" placeholder="duration in minutes"><br>
+          <input class="save-run" type="number" name="run[timeTaken]" min="1" max="120" value="" placeholder="duration in minutes"><br>
         </div>
       </div>
       <div class="form group">
