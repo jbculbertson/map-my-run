@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RunTracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="https://use.fontawesome.com/7b5116c3a6.js"></script>
+</head>
+
+<body class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top" id="nav-hide-init">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+      <a class="navbar-brand">RunTracker</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-center">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" id="show-all-button">FRIENDS</button>
+            <button type="button" class="btn btn-default" id="show-my-button">ME</button>
+            <button type="button" class="btn btn-default" id="save-run-button" data-toggle="modal" data-target="#loader-modal">MAP ROUTE</button>
+            <button type="button" class="btn btn-default" id="stats-button">STATS</button>
+            <button type="button" class="btn btn-default" id="settings-button" data-toggle="modal" data-target="#settings-modal">SETTINGS</button>
+            <button type="button" class="btn btn-default" id="sign-out-button">LOG OUT</button>
+          </div>
+        </ul>
+      </div>
+  </nav>
+  <div class="jumbotron">
+    <h1 class="display-3" id="jumbo-title">RunTracker</h1>
+    <p class="lead">
+      <div class="btn-group bt-grp-lg">
+        <button type="button" class="btn btn-success" id="sign-up-button" data-toggle="modal" data-target="#sign-up-modal">
+      Sign Up</button>
+        <button type="button" class="btn btn-success" id="sign-in-button" data-toggle="modal" data-target="#sign-in-modal">
+      Sign In</button>
+    </div>
+    </p>
+  </div>
+  <!-- MESSAGE BOARD -->
+  <div class="text-center"><h3 id="message-board"></h3></div>
+  <!-- STATS TABLE -->
+  <div id="stats-body">
+    <h3 class="stats-header">
+      <img src="https://i.imgur.com/9UdnXX4.png" height="42" width="42" alt="trophy icon">
+      LEADERBOARD
+      <img src="https://i.imgur.com/9UdnXX4.png" height="42" width="42" alt="trophy icon">
+    </h3>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th><img src="https://i.imgur.com/OpFcpiP.png" height="45" width="45" alt="road icon"></th>
+        <th><img src="https://i.imgur.com/6pjNUsc.png" height="45" width="45" alt="clock icon"></th>
+        <th><img src="https://i.imgur.com/QimP7jE.png" height="45" width="45" alt="hourglass icon"></th>
+        <th><img src="https://i.imgur.com/e7mkp7y.png" height="45" width="45" alt="tachometer icon"></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <h6>TOTAL DISTANCE (MI)</h6></td>
+        <td>
+          <h6>TOTAL MINUTES</h6></td>
+        <td>
+          <h6>LONGEST RUN</h6></td>
+        <td>
+          <h6>FASTEST PACE</h6></td>
+      </tr>
+      <tr>
+        <td class="restrict-column"><strong><p id="personal-stats-name"></p></strong></td>
+        <td class="miles-stat"></td>
+        <td class="time-stat"></td>
+        <td class="longest-stat"></td>
+        <td class="pace-stat"></td>
+      </tr>
+      <tr>
+        <td class="restrict-column"><strong>Global Record</strong></td>
+        <td class="global-distance-stat"></td>
+        <td class="global-time-stat"></td>
+        <td class="global-longest-stat"></td>
+        <td class="global-pace-stat"></td>
+      </tr>
+      <tr>
+        <td class="restrict-column"><strong>Global Record Holder</strong></td>
+        <td class="global-distanceOwner-stat revert"></td>
+        <td class="global-timeOwner-stat revert"></td>
+        <td class="global-longestOwner-stat revert"></td>
+        <td class="global-paceOwner-stat revert"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div class="hide-stat-icon distance"><img src="https://i.imgur.com/p8oAp1X.png" height="42" width="42" alt="thumbs up icon"></div>
+          <div class="hide-stat-icon distance"><img src="https://i.imgur.com/p8oAp1X.png" height="42" width="42" alt="thumbs up icon"></div>
+        </td>
+        <td>
+          <div class="hide-stat-icon time"><img src="https://i.imgur.com/MCsGvrD.png" height="42" width="42" alt="present icon"></div>
+          <div class="hide-stat-icon time"><img src="https://i.imgur.com/MCsGvrD.png" height="42" width="42" alt="present icon"></div>
+        </td>
+        <td>
+          <div class="hide-stat-icon longest"><img src="https://i.imgur.com/lfmLDn0.png" height="42" width="42" alt="oscar icon"></div>
+          <div class="hide-stat-icon longest"><img src="https://i.imgur.com/lfmLDn0.png" height="42" width="42" alt="oscar icon"></div>
+        </td>
+        <td>
+          <div class="hide-stat-icon pace"><img src="https://i.imgur.com/snf0SrA.png" height="42" width="42" alt="badge icon"></div>
+          <div class="hide-stat-icon pace"><img src="https://i.imgur.com/snf0SrA.png" height="42" width="42" alt="badge icon"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- SEARCH BAR -->
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <!-- MAIN MAP -->
+  <div class="map-view row">
+    <div class="col-sm-3" id="map-key">
+      <h3 class="save-run-modal-header"></h3>
+      <table class="table">
+      <tr>
+      <td><img src="https://i.imgur.com/QOvyqvA.png" height="42" width="42" alt="map icon"></td>
+    </tr>
+    <tr>
+      <td><p>Click on the map to place a marker and start your route</p></td>
+    </tr>
+    <tr>
+      <td><img src="https://i.imgur.com/FKFc0jC.png" height="42" width="42" alt="trash icon"></td>
+      </tr>
+      <tr>
+      <td><p>Remove any marker with a click, or clear all markers by clicking Clear Route</p></td>
+      </tr>
+      <tr>
+      <td><img src="https://i.imgur.com/B0nLfjb.png" height="42" width="42" alt="save icon"></td>
+      </tr>
+      <tr>
+      <td><p>Save your route with additional details</p></td>
+      </tr>
+    </th>
+  </table>
+  <form>
+      <div class="form group">
+      <label class="col-sm-3">Distance</label>
+      <div class="col-sm-9">
+        <div class="nativeDatePicker">
+          <input class="save-run" type="number" id="distance-input" name="run[distance]" readonly>
+          <span class="validity"></span>
+        </div>
+      </div>
+    </div>
+  </form>
+    <form id="save-run">
+      <div class="form group">
+        <label class="col-sm-3">Duration</label>
+        <div class="col-sm-9">
+          <input class="save-run" type="number" name="run[timeTaken]" min="1" max="120" value="" placeholder="duration in minutes"><br>
+        </div>
+      </div>
+      <div class="form group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success" name="submit" value="">Save Route</button>
+          <button type="button" class="btn btn-danger" id="clear-button">Clear Route</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-9">
+    <div id="map"></div>
+  </div>
+  </div>
+  <!-- DISPLAY - FOR PLACING ALL HANDLEBARS CONTENT -->
+  <div id="display"></div>
+  <!-- ALLLL MODALS NOW -->
+  <!-- SETTINGS MODAL -->
+  <div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <h3 class="change-password-modal-header"></h3>
+        <div class="modal-body">
+          <h3 class="modal-title">Settings</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+          <form id="change-password">
+            <div class="form group">
+              <label class="col-sm-3">Old Password: </label>
+              <div class="col-sm-9">
+                <input class="change-password" type="password" name="passwords[old]" value="" placeholder="Old Password">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-3">New Password: </label>
+              <div class="col-sm-9">
+                <input class="change-password" type="password" name="passwords[new]" value="" placeholder="New Password">
+              </div>
+            </div>
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-default" name="submit" value="Change Password">Change Password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MAP MODAL -->
+  <div class="modal fade" id="show-run-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+          <div id="map2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- LOADER MODAL -->
+  <div class="modal fade" id="loader-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <h3 class="modal-title" id="loader-modal-title"></h3>
+        <h4 class="modal-title"  id="loader-modal-subtitle"></h4>
+        <div class="modal-body">
+          <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SIGN UP -->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Sign Up</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="sign-up-modal-header"></h3>
+          <form id="sign-up">
+            <div class="form group">
+              <label class="col-sm-3">First Name: </label>
+              <div class="col-sm-9">
+                <input class="sign-up" type="text" name="credentials[firstName]" value="" placeholder="Joe">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-3">Last Name: </label>
+              <div class="col-sm-9">
+                <input class="sign-up" type="text" name="credentials[lastName]" value="" placeholder="Schmoe">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-3">Email: </label>
+              <div class="col-sm-9">
+                <input class="sign-up" type="text" name="credentials[email]" value="" placeholder="abc@example.com">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-3">Password: </label>
+              <div class="col-sm-9">
+                <input class="sign-up" type="password" name="credentials[password]" value="" placeholder="password">
+              </div>
+            </div>
+            <div class="form group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default" name="submit" value="Sign Up!">Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SIGN IN -->
+  <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Sign In</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="sign-in-modal-header"></h3>
+          <form id="sign-in">
+            <div class="form group">
+              <label class="col-sm-2">Email: </label>
+              <div class="col-sm-10">
+                <input class="sign-in" type="text" name="credentials[email]" value="" placeholder="abc@example.com">
+              </div>
+            </div>
+            <div class="form group">
+              <label class="col-sm-2">Password: </label>
+              <div class="col-sm-10">
+                <input class="sign-in" type="password" name="credentials[password]" value="" placeholder="password">
+              </div>
+            </div>
+            <div class="form group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" name="submit" value="Sign in!">Sign In</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
