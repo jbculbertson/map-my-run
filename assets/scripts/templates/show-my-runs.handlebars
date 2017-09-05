@@ -8,6 +8,17 @@
   {{/each}}
 </ul>
 </div>
+<div class="overlay2">
+  <button type="button" class="close-like-view">
+<span>&times;</span>
+</button>
+  <h4>People Who Liked Your Run</h4>
+  <ul>
+  {{#each likes as |like|}}
+  <li class="like-hide">{{like._ownerFullName}}</li>
+  {{/each}}
+</ul>
+</div>
   <div class="panel-heading">
     <div class="col-sm-1">
       <img src="https://i.imgur.com/4MW3dE8.png" height="62" width="62">
@@ -30,8 +41,8 @@
         <i class="fa fa-trash-o"></i> Delete</button>
       <button class="btn btn-success btn-sm" id="like-run" data-id="{{run._id}}">
         <i class="fa fa-heart"></i></button>
-      <button class="btn btn-success btn-sm" id="like-counter" data-id="{{run._id}}"
-      data-toggle="modal" data-target="#like-modal">{{run.likes.length}}</button>
+      <button class="btn btn-success btn-sm" id="like-counter" data-id="{{run._id}}">
+        {{run.likes.length}}</button>
     </div>
   </div>
   <div class="panel-body">
@@ -53,23 +64,5 @@
    </tr>
   </table>
 </div>
-</div>
-
-<div class="modal fade" id="like-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Likes</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-      </div>
-      <div class="modal-body">
-        {{#each likes as |like|}}
-        <li class="like-hide">{{like._ownerFullName}}</li>
-        {{/each}}
-      </div>
-    </div>
-  </div>
 </div>
 {{/each}}

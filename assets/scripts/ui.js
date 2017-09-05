@@ -1,4 +1,5 @@
 'use strict'
+
 const showAllRunsTemplate = require('./templates/show-all-runs.handlebars')
 const showMyRunsTemplate = require('./templates/show-my-runs.handlebars')
 

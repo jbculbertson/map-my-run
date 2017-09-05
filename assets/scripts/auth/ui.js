@@ -26,7 +26,7 @@ const signInSuccess = (data) => {
   $('.navbar').show()
 }
 
-const signInFailure = (error) => {
+const signInFailure = () => {
   $('.sign-in-modal-header').text('Please make sure you have the correct credentials')
   $('.sign-in').val('')
   $('.sign-up').val('')

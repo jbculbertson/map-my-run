@@ -17,6 +17,11 @@ p, h4 {
   margin: 5px;
 }
 
+.close-like-view {
+  float: right;
+  margin: 6px;
+}
+
 .container-fluid {
   height: 100vh;
   margin: 0;
@@ -47,11 +52,27 @@ input {
   color: $white;
   font-family: 'Rock Salt', cursive;
 }
+
 .like-hide {
   text-align: left;
 }
 
+.modal-body {
+  overflow-y: auto;
+}
+
 .overlay {
+  background-color: $grey;
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+  position: absolute;
+  text-align: center;
+  width: 50%;
+  z-index: 1;
+}
+
+.overlay2 {
   background-color: $grey;
   display: none;
   height: 100%;

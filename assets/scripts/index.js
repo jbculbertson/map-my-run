@@ -61,11 +61,20 @@ $(() => {
   $('#display').on('mouseleave', '#friends-like-counter', function () {
     $(this).parents('.panel-default').children('.overlay').css('display', 'none')
   })
-  $(document).on('click', function (event) {
-    if (event.target.id !== '.overlay') {
-      $('.overlay').hide()
-    }
+  $('#display').on('click', '#friends-like-counter', function () {
+    $(this).parents('.panel-default').children('.overlay2').css('display', 'block')
   })
+  $('#display').on('click', '.close-like-view', function () {
+    $(this).parents('.panel-default').children('.overlay2').css('display', 'none')
+  })
+  $('#display').on('click', '#like-counter', function () {
+    $(this).parents('.panel-default').children('.overlay2').css('display', 'block')
+  })
+  // $(document).on('click', function (event) {
+  //   if (event.target.id !== '.overlay2' || event.target.id !== '#friends-like-counter') {
+  //     $('.overlay2').hide()
+  //   }
+  // })
   //
 })
 
