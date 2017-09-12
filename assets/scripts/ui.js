@@ -112,19 +112,35 @@ const getGlobalTotalTime = (data) => {
 }
 
 const getGlobalTotalDistance = (data) => {
+  // declare empty object to hold run stats
   const globalTotalDistance = {}
+  // loop through all runs
   for (let i = 0; i < data.runs.length; i++) {
+    // check if the ownerName of each run (i) is already a key on
+    // globalTotalDistance object
     if (globalTotalDistance[data.runs[i].ownerName]) {
+      // if it is, increment the value by the new i's distance
       globalTotalDistance[data.runs[i].ownerName] += data.runs[i].distance
     } else {
+      // if not, create a new key: value pair with owner and run distance
       globalTotalDistance[data.runs[i].ownerName] = data.runs[i].distance
     }
   }
+  // take globalTotalDistance object, Object.values, will return an array of
+  // just the values.  Then .sort, and take the first item, which will
+  // be the longest global aggregate distance
   const maxTotalDistance = Object.values(globalTotalDistance).sort((prev, next) => next - prev)[0]
+  // similar to above, but using .keys to get the keys, and call .reduce
+  // to reduce it to one value based on a callback
   const maxTotalDistanceOwner = Object.keys(globalTotalDistance).reduce(function (a, b) {
+    // callback regularly returns only the larger distance of indeces compared
     return globalTotalDistance[a] > globalTotalDistance[b] ? a : b
   })
+  // use jquery to send those datapoints to fields on the stats page
   $('.global-distance-stat').text((maxTotalDistance).toFixed(2) + ' miles')
+  // oh, and if the currently logged in user === the global distance record
+  // holder, then do a bunch of CSS to modify the text, and show a hidden
+  // celebratory icon
   if (maxTotalDistanceOwner === store.user.fullName) {
     $('.global-distanceOwner-stat').text(maxTotalDistanceOwner)
     $('.global-distanceOwner-stat').css('font-weight', 'bold')
